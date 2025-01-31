@@ -25,7 +25,6 @@ header {
     display: flex;
     align-items: center;
     margin-left: 30px;
-    margin-right: 10px;
 }
 
 .logo {
@@ -255,4 +254,3 @@ footer nav ul li a {
 footer nav ul li a:hover {
     color: #8A2BE2;
 }
-
