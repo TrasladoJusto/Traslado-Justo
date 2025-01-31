@@ -305,3 +305,111 @@ footer nav ul li a {
 footer nav ul li a:hover {
     color: #8A2BE2;
 }
+
+/* General del header */
+header {
+    background-color: #FFFFFF;
+    padding: 10px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Barra de navegación */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    background-color: #fff;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.logo {
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Menú de navegación */
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #6a0dad;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Botón del menú (desplegable) */
+.menu-toggle {
+    display: none;
+}
+
+/* Estilo del menú desplegable en modo móvil */
+@media (max-width: 768px) {
+    header {
+        width: 95%;
+        margin: 0;
+    }
+
+    header .container {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .hero {
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        right: 20px;
+        background-color: #fff;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .menu li {
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #6a0dad;
+    }
+}
