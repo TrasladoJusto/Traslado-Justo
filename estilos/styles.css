@@ -65,6 +65,7 @@ header nav ul li a:hover {
     justify-content: flex-start;
 }
 
+/* Cuadro semiopaco */
 .hero-content {
     background-color: rgba(255, 255, 255, 0.7);
     padding: 30px;
@@ -73,6 +74,7 @@ header nav ul li a:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Texto destacado */
 .highlight {
     font-size: 1.2em;
     font-weight: bold;
@@ -80,6 +82,7 @@ header nav ul li a:hover {
     margin-bottom: 10px;
 }
 
+/* Título principal */
 .hero-title {
     font-size: 2.5em;
     font-weight: bold;
@@ -88,6 +91,7 @@ header nav ul li a:hover {
     margin-bottom: 20px;
 }
 
+/* Subtítulo */
 .hero-subtitle {
     font-size: 1em;
     color: #333;
@@ -95,6 +99,7 @@ header nav ul li a:hover {
     margin-bottom: 20px;
 }
 
+/* Botón de llamada a la acción */
 .cta-button {
     display: inline-block;
     background-color: #4B0082;
@@ -108,6 +113,18 @@ header nav ul li a:hover {
 
 .cta-button:hover {
     background-color: #8A2BE2;
+}
+
+/* Responsive: centrar contenido en pantallas pequeñas */
+@media (max-width: 768px) {
+    .hero {
+        padding-left: 20px;
+        justify-content: center;
+    }
+
+    .hero-content {
+        max-width: 90%;
+    }
 }
 
 /* Features Section */
@@ -240,7 +257,7 @@ footer nav ul li a:hover {
     color: #8A2BE2;
 }
 
-/* Estilos para el menú desplegable en móviles */
+/* Estilos para el menú desplegable móvil */
 @media (max-width: 768px) {
     .menu {
         display: none;
