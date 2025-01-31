@@ -4,16 +4,20 @@
     <meta name="google-adsense-account" content="ca-pub-2938269480263869">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="estilos/img/favicon.svg" />
-<link rel="shortcut icon" href="estilos/img/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="estilos/img/apple-touch-icon.png" />
-<meta name="apple-mobile-web-app-title" content="Traslado Justo" />
-<link rel="manifest" href="estilos/img/site.webmanifest" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="estilos/img/favicon.svg" />
+    <link rel="shortcut icon" href="estilos/img/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="estilos/img/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Traslado Justo" />
+    <link rel="manifest" href="estilos/img/site.webmanifest" />
     <title>Inicio - Traslado Justo</title>
-    <link rel="stylesheet" href="estilos/inicio.css">
+    <link rel="stylesheet" href="estilos/styles.css">
 </head>
 <body>
+    <!-- Fondo desenfocado (solo para móviles) -->
+    <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+
+    <!-- Header -->
     <header>
         <div class="logo-container">
             <img src="estilos/img/logo.png" alt="Logo de Traslado Justo" class="logo">
@@ -26,14 +30,11 @@
                 <li><a href="precios.html">Precios</a></li>
                 <li><a href="contacto.html">Reservar</a></li>
                 <li><a href="acerca.html">Acerca</a></li>
-                </ul>
-            </nav>
-        </div>
+            </ul>
+        </nav>
     </header>
-    
-    
-    
-    
+
+    <!-- Main Content -->
     <main>
         <div class="hero">
             <div class="hero-content">
@@ -42,9 +43,8 @@
                 <p class="hero-subtitle">Después de un vuelo agotador, te recibiremos en la terminal y te llevaremos comodamente a tu destino.<br> Nuestros condutores estarán allí esperando, incluso si hay cambios en el itinerario.</p>
                 <a href="contacto.html" class="cta-button">Reserva aquí</a>
             </div>
-    
-            </div>
-        </section>
+        </div>
+
         <section id="features">
             <h2>Nuestros Admistradores</h2>
             <div class="features-container">
@@ -65,6 +65,7 @@
                 </div>
             </div>
         </section>
+
         <section id="testimonials">
             <h2>Creadores de la Pagina</h2>
             <div class="testimonials-container">
@@ -77,26 +78,43 @@
                     <h4>- Jehú Anchante</h4>
                 </div>
             </div>
-            </div>
         </section>
     </main>
+
+    <!-- Footer -->
     <footer>
         <div class="container">
             <p>© 2024 Traslado Justo. Todos los derechos reservados.</p>
             <nav>
                 <ul>
-                    <li><a href="#">Política de privacidad</a></li>
-                    <li><a href="#">Términos de servicio</a></li>
+                    <li><a href="Politicas y Terminos.html">Política de privacidad</a></li>
+                    <li><a href="Politicas y Terminos.html">Términos de servicio</a></li>
                 </ul>
             </nav>
         </div>
     </footer>
-</body>
-<script>
-    function toggleMenu() {
-        const menu = document.querySelector('.menu');
-        menu.classList.toggle('active');
-    }
-</script>
+
+    <!-- JavaScript integrado -->
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            const overlay = document.getElementById('overlay');
+            menu.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        // Cerrar el menú al hacer clic fuera de él
+        document.addEventListener('click', function(event) {
+            const menu = document.querySelector('.menu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            const overlay = document.getElementById('overlay');
+
+            // Verificar si el clic fue fuera del menú y del botón de alternar
+            if (!menu.contains(event.target) && !menuToggle.contains(event.target) && menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
