@@ -15,7 +15,7 @@
 </head>
 <body>
     <!-- Fondo desenfocado (solo para móviles) -->
-    <div id="overlay" class="overlay"></div>
+    <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
 
     <!-- Header -->
     <header>
@@ -102,6 +102,19 @@
             menu.classList.toggle('active');
             overlay.classList.toggle('active');
         }
+
+        // Cerrar el menú al hacer clic fuera de él
+        document.addEventListener('click', function(event) {
+            const menu = document.querySelector('.menu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            const overlay = document.getElementById('overlay');
+
+            // Verificar si el clic fue fuera del menú y del botón de alternar
+            if (!menu.contains(event.target) && !menuToggle.contains(event.target) && menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                overlay.classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>
