@@ -135,7 +135,6 @@ document.addEventListener('click', function(event) {
         overlay.classList.remove('active');
     }
 });
-
 // Inicializa el mapa y configura eventos
 document.addEventListener('DOMContentLoaded', () => {
     initMap();
@@ -144,5 +143,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const clearButton = document.getElementById('clearMarkers');
     const whatsappButton = document.getElementById('enviarWhatsApp');
 
-    if (calculateButton) calculateButton.addEventListener('click', calculate
+    if (calculateButton) calculateButton.addEventListener('click', calculateRoute);
+    if (clearButton) clearButton.addEventListener('click', clearMarkers);
+    if (whatsappButton) whatsappButton.addEventListener('click', enviarWhatsApp);
+});
+
+// Envía los datos a WhatsApp
+function enviarWhatsApp(event) {
+    event.preventDefault();
+
+    const nombre = document.getElementById('nombre')?.value.trim() || 'No especificado';
+    const apellidos = document.getElementById('apellidos')?.value.trim() || '';
+    const celular = document.getElementById('celular')?.value.trim() || 'No especificado';
+    const correo = document.getElementById('correo')?.value.trim() || 'No especificado';
+    const origen = document.getElementById('origen')?.value.trim() || 'No especificado';
+    const destino = document.getElementById('destino')?.value.trim() || 'No especificado';
+    const vehiculo = document.getElementById('vehiculo')?.value.trim() || 'No especificado';
+    const fecha = document.getElementById('fecha')?.value.trim() || 'No especificada';
+    const hora = document.getElementById('hora')?.value.trim() || 'No especificada';
+
+    const costo = document.getElementById('costo-res')?.textContent.match(/Costo estimado: S\/ ([\d.]+)/)?.[1] || "0.00";
+
+    const mensaje = `
+        Solicito un servicio de Traslado Justo.
+        Nombre: ${nombre} ${apellidos}
+        Celular: ${celular}
+        Correo: ${correo}
+        Vehículo: ${vehiculo}
+        Fecha: ${fecha}
+        Hora: ${hora}
+        Origen: ${origen}
+        Destino: ${destino}
+        Costo estimado: S/ ${costo}
+    `.trim();
+
+    const url = `https://wa.me/51968726558?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+}
 
