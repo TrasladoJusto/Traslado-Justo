@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="google-adsense-account" content="ca-pub-2938269480263869">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios - Traslado Justo</title>
+    <link rel="stylesheet" href="estilos/servicios.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="estilos/img/logo.png" alt="Logo de Traslado Justo" class="logo">
+        </div>
+        <nav class="menu-container">
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="menu">
+                <li><a href="inicio.html" class="active">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="precios.html">Precios</a></li>
+                <li><a href="contacto.html">Reservar</a></li>
+                <li><a href="acerca.html">Acerca</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    
+    
+    <main>
+        <section id="intro">
+            <h2>Nuestros Servicios</h2>
+            <p>Descubre las soluciones que ofrecemos para transportar tu vehículo de forma rápida y segura.</p>
+        </section>
+        <section id="services">
+            <div class="service">
+                <h3>Traslado Local</h3>
+                <p>Servicio ideal para movimientos dentro de la misma ciudad o zona cercana.</p>
+            </div>
+            <div class="service">
+                <h3>Traslado Nacional</h3>
+                <p>Transportamos tu vehículo a cualquier parte del país con total seguridad.</p>
+            </div>
+            <div class="service">
+                <h3>Servicios Premium</h3>
+                <p>Opciones exclusivas para traslado de autos de lujo y servicios personalizados.</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>© 2024 Traslado Justo. Todos los derechos reservados.</p>
+            <nav>
+                <ul>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Términos de servicio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+<script>
+    function toggleMenu() {
+        const menu = document.querySelector('.menu');
+        menu.classList.toggle('active');
+    }
+</script>
+</body>
+</html>

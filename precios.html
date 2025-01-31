@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="google-adsense-account" content="ca-pub-2938269480263869">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precios - Traslado Justo</title>
+    <link rel="stylesheet" href="estilos/precios.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="estilos/img/logo.png" alt="Logo de Traslado Justo" class="logo">
+        </div>
+        <nav class="menu-container">
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="menu">
+                <li><a href="inicio.html" class="active">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="precios.html">Precios</a></li>
+                <li><a href="contacto.html">Reservar</a></li>
+                <li><a href="acerca.html">Acerca</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    
+    
+    
+    <main>
+        <section id="pricing">
+            <h2>Nuestras Tarifas</h2>
+            <p>Escoge el paquete que mejor se adapte a tus necesidades.</p>
+            <div class="pricing-table">
+                <div class="pricing-plan">
+                    <h3>Básico</h3>
+                    <p>Traslados locales</p>
+                    <p class="price">$50</p>
+                    <ul>
+                        <li>Distancia máxima: 50 km</li>
+                        <li>Entrega en 48 horas</li>
+                    </ul>
+                    <button>Seleccionar</button>
+                </div>
+                <div class="pricing-plan">
+                    <h3>Estandar</h3>
+                    <p>Traslados nacionales</p>
+                    <p class="price">$150</p>
+                    <ul>
+                        <li>Distancia máxima: 500 km</li>
+                        <li>Entrega en 72 horas</li>
+                    </ul>
+                    <button>Seleccionar</button>
+                </div>
+                <div class="pricing-plan premium">
+                    <h3>Premium</h3>
+                    <p>Autos de lujo o personalizados</p>
+                    <p class="price">$300</p>
+                    <ul>
+                        <li>Sin límite de distancia</li>
+                        <li>Seguimiento en tiempo real</li>
+                    </ul>
+                    <button>Seleccionar</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>© 2024 Traslado Justo. Todos los derechos reservados.</p>
+            <nav>
+                <ul>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Términos de servicio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+<script>
+    function toggleMenu() {
+        const menu = document.querySelector('.menu');
+        menu.classList.toggle('active');
+    }
+</script>
+</body>
+</html>

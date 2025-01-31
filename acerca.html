@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="google-adsense-account" content="ca-pub-2938269480263869">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerca de Nosotros - Traslado Justo</title>
+    <link rel="stylesheet" href="estilos/acerca.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="estilos/img/logo.png" alt="Logo de Traslado Justo" class="logo">
+        </div>
+        <nav class="menu-container">
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="menu">
+                <li><a href="inicio.html" class="active">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="precios.html">Precios</a></li>
+                <li><a href="contacto.html">Reservar</a></li>
+                <li><a href="acerca.html">Acerca</a></li>
+            </ul>
+        </nav>
+    </header>
+        
+    
+    
+    <main>
+        <section id="about">
+            <h2>Sobre Nosotros</h2>
+            <p>En *Traslado Justo*, nos especializamos en proporcionar servicios confiables y seguros para el transporte de vehículos. Con más de 10 años de experiencia, hemos perfeccionado nuestros procesos para garantizar la satisfacción de nuestros clientes.</p>
+        </section>
+        <section id="mission">
+            <div class="mission-item">
+                <h3>Nuestra Misión</h3>
+                <p>Ofrecer soluciones de transporte de vehículos de alta calidad, priorizando la seguridad, puntualidad y confianza.</p>
+            </div>
+            <div class="mission-item">
+                <h3>Nuestra Visión</h3>
+                <p>Convertirnos en líderes nacionales en transporte de vehículos, reconocidos por nuestra innovación y servicio excepcional.</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>© 2024 Traslado Justo. Todos los derechos reservados.</p>
+            <nav>
+                <ul>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Términos de servicio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+<script>
+    function toggleMenu() {
+        const menu = document.querySelector('.menu');
+        menu.classList.toggle('active');
+    }
+</script>
+</body>
+</html>
