@@ -162,7 +162,25 @@ function enviarWhatsApp(event) {
     window.open(url, '_blank');
 }
 
+function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    const overlay = document.getElementById('overlay');
+    menu.classList.toggle('active');
+    overlay.classList.toggle('active');
+}
 
+// Cerrar el menú al hacer clic fuera de él
+document.addEventListener('click', function(event) {
+    const menu = document.querySelector('.menu');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const overlay = document.getElementById('overlay');
+
+    // Verificar si el clic fue fuera del menú y del botón de alternar
+    if (!menu.contains(event.target) && !menuToggle.contains(event.target) && menu.classList.contains('active')) {
+        menu.classList.remove('active');
+        overlay.classList.remove('active');
+    }
+});
 
 
 
