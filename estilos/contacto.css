@@ -64,22 +64,28 @@ header {
     .menu {
         display: none;
         flex-direction: column;
-        position: absolute;
-        top: 48px;
-        right: 0;
-        background-color: #FFFFFF;
-        padding: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100%;
+        background-color: #fff;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
         z-index: 10;
+        transition: right 0.3s ease;
     }
 
     .menu.active {
-        display: flex;
+        right: 0;
+    }
+
+    .menu li {
+        margin: 15px 0;
     }
 
     .menu-toggle {
         display: block;
-        font-size: 20px;
+        font-size: 24px;
         background: none;
         border: none;
         cursor: pointer;
