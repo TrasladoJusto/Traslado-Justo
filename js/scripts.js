@@ -116,6 +116,7 @@ function clearMarkers() {
     document.getElementById('tiempo-res').textContent = 'Tiempo estimado: -';
 }
 
+// Función para alternar el menú desplegable
 function toggleMenu() {
     const menu = document.querySelector('.menu');
     const overlay = document.getElementById('overlay');
@@ -135,6 +136,7 @@ document.addEventListener('click', function(event) {
         overlay.classList.remove('active');
     }
 });
+
 // Inicializa el mapa y configura eventos
 document.addEventListener('DOMContentLoaded', () => {
     initMap();
