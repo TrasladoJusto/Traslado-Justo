@@ -28,7 +28,7 @@
             <img src="estilos/img/logo.png" alt="Logo de Traslado Justo" class="logo">
         </div>
         <nav class="menu-container">
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir o cerrar menú">☰</button>
             <ul class="menu">
                 <li><a href="inicio.html" class="active">Inicio</a></li>
                 <li><a href="servicios.html">Servicios</a></li>
@@ -115,25 +115,5 @@
     <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <script src="js/scripts.js"></script>
-    <script>
-        function toggleMenu() {
-            const menu = document.querySelector('.menu');
-            const overlay = document.getElementById('overlay');
-            menu.classList.toggle('active');
-            overlay.classList.toggle('active');
-        }
-
-        // Cerrar el menú al hacer clic fuera de él
-        document.addEventListener('click', function(event) {
-            const menu = document.querySelector('.menu');
-            const menuToggle = document.querySelector('.menu-toggle');
-            const overlay = document.getElementById('overlay');
-
-            // Verificar si el clic fue fuera del menú y del botón de alternar
-            if (!menu.contains(event.target) && !menuToggle.contains(event.target) && menu.classList.contains('active')) {
-                menu.classList.remove('active');
-                overlay.classList.remove('active');
-            }
-        });
 </body>
 </html>
