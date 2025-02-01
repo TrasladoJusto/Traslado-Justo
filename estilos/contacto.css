@@ -61,10 +61,10 @@ header {
     border: none;
     cursor: pointer;
     color: #6a0dad;
-    outline: none; /* Elimina el borde morado al hacer clic */
+    outline: none; /* Elimina el borde morado */
 }
 
-/* Responsive Header */
+/* ========== RESPONSIVE (Móvil) ========== */
 @media (max-width: 768px) {
     .menu {
         display: none;
@@ -78,12 +78,12 @@ header {
         box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
         z-index: 10;
         transition: right 0.3s ease;
-        padding-top: 60px; /* Espacio para el botón del menú */
+        padding-top: 60px;
     }
 
     .menu.active {
         right: 0;
-        display: flex; /* Asegura que el menú se muestre cuando está activo */
+        display: flex;
     }
 
     .menu li {
@@ -91,12 +91,17 @@ header {
         text-align: center;
     }
 
+    .menu li a {
+        color: #6a0dad;
+        font-size: 18px; /* Tamaño aumentado para móviles */
+    }
+
     .menu-toggle {
         display: block;
         position: fixed;
         top: 10px;
         right: 10px;
-        z-index: 15; /* Asegura que el botón esté por encima del menú */
+        z-index: 15;
     }
 
     /* Fondo desenfocado */
@@ -116,11 +121,12 @@ header {
         display: block;
     }
 
-    /* Desenfocar el mapa cuando el menú está activo */
+    /* Desenfocar mapa */
     .overlay.active ~ main #map {
         filter: blur(5px);
     }
 }
+
 /* Contact Section */
 #contact {
     text-align: center;
