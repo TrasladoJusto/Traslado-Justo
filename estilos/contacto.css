@@ -61,10 +61,10 @@ header {
     border: none;
     cursor: pointer;
     color: #6a0dad;
-    outline: none; /* Elimina el borde morado */
+    outline: none;
 }
 
-/* ========== RESPONSIVE (Móvil) ========== */
+/* ========== MODO MÓVIL ========== */
 @media (max-width: 768px) {
     .menu {
         display: none;
@@ -72,13 +72,14 @@ header {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 250px;
+        width: 200px; /* Ancho reducido */
         height: 100%;
         background-color: #fff;
         box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
         z-index: 10;
         transition: right 0.3s ease;
-        padding-top: 60px;
+        margin: 0;
+        padding: 70px 15px 0 0; /* Espacio superior y margen derecho */
     }
 
     .menu.active {
@@ -87,13 +88,24 @@ header {
     }
 
     .menu li {
-        margin: 15px 0;
-        text-align: center;
+        margin: 12px 0;
+        text-align: right; /* Alineación a la derecha */
     }
 
     .menu li a {
         color: #6a0dad;
-        font-size: 18px; /* Tamaño aumentado para móviles */
+        font-size: 16px;
+        padding: 8px 15px; /* Espaciado interno derecho */
+        display: block;
+        transition: none; /* Elimina transición de color */
+    }
+
+    /* Eliminar cualquier cambio de color */
+    .menu li a:hover,
+    .menu li a:focus,
+    .menu li a:active {
+        color: #6a0dad !important;
+        background-color: transparent !important;
     }
 
     .menu-toggle {
@@ -102,6 +114,12 @@ header {
         top: 10px;
         right: 10px;
         z-index: 15;
+        background-color: transparent;
+    }
+
+    /* Eliminar fondo al presionar el botón */
+    .menu-toggle:active {
+        background-color: transparent;
     }
 
     /* Fondo desenfocado */
@@ -121,7 +139,7 @@ header {
         display: block;
     }
 
-    /* Desenfocar mapa */
+    /* Desenfocar el mapa cuando el menú está activo */
     .overlay.active ~ main #map {
         filter: blur(5px);
     }
