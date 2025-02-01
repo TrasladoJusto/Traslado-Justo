@@ -32,37 +32,6 @@ header {
     object-fit: contain;
 }
 
-/* Menú de navegación */
-.menu {
-    list-style: none;
-    display: flex;
-    gap: 50px;
-    margin-left: 0;
-    margin-right: 35px;
-}
-
-.menu li a {
-    text-decoration: none;
-    color: #6a0dad;
-    font-size: 16px;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.menu li a:hover, .menu li a:focus {
-    color: #4a148c;
-}
-
-/* Botón del menú */
-.menu-toggle {
-    display: none;
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #6a0dad; /* Color fijo para el ícono */
-}
-
 /* Responsive Header */
 @media (max-width: 768px) {
     .menu {
@@ -89,6 +58,11 @@ header {
 
     .menu-toggle {
         display: block;
+        font-size: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #6a0dad;
     }
 
     /* Fondo desenfocado */
@@ -107,6 +81,7 @@ header {
     .overlay.active {
         display: block;
     }
+}
 
     /* Desenfocar el mapa cuando el menú está activo */
     .overlay.active ~ main #map {
