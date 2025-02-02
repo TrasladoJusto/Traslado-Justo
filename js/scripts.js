@@ -124,23 +124,16 @@ function toggleMenu() {
     overlay.classList.toggle("active");
 }
 
-// Cerrar el menú al hacer clic fuera de él
-document.addEventListener("click", function (event) {
+// Cerrar menú al hacer clic fuera
+document.addEventListener("click", (e) => {
     const menu = document.querySelector(".menu");
     const menuToggle = document.querySelector(".menu-toggle");
-    const overlay = document.getElementById("overlay");
-
-    // Verificar si el clic fue fuera del menú y del botón de alternar
-    if (
-        !menu.contains(event.target) &&
-        !menuToggle.contains(event.target) &&
-        menu.classList.contains("active")
-    ) {
+    
+    if (!menu.contains(e.target) && !menuToggle.contains(e.target) && menu.classList.contains("active")) {
         menu.classList.remove("active");
-        overlay.classList.remove("active");
+        document.getElementById("overlay").classList.remove("active");
     }
 });
-
 // Inicializa el mapa y configura eventos
 document.addEventListener("DOMContentLoaded", () => {
     initMap();
