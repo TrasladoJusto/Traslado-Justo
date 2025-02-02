@@ -182,4 +182,3 @@ function enviarWhatsApp(event) {
     const url = `https://wa.me/51968726558?text=${encodeURIComponent(mensaje)}`;
     window.open(url, '_blank');
 }
-
