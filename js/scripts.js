@@ -118,36 +118,40 @@ function clearMarkers() {
 
 // Función para alternar el menú desplegable
 function toggleMenu() {
-    const menu = document.querySelector('.menu');
-    const overlay = document.getElementById('overlay');
-    menu.classList.toggle('active');
-    overlay.classList.toggle('active');
+    const menu = document.querySelector(".menu");
+    const overlay = document.getElementById("overlay");
+    menu.classList.toggle("active");
+    overlay.classList.toggle("active");
 }
 
 // Cerrar el menú al hacer clic fuera de él
-document.addEventListener('click', function(event) {
-    const menu = document.querySelector('.menu');
-    const menuToggle = document.querySelector('.menu-toggle');
-    const overlay = document.getElementById('overlay');
+document.addEventListener("click", function (event) {
+    const menu = document.querySelector(".menu");
+    const menuToggle = document.querySelector(".menu-toggle");
+    const overlay = document.getElementById("overlay");
 
     // Verificar si el clic fue fuera del menú y del botón de alternar
-    if (!menu.contains(event.target) && !menuToggle.contains(event.target) && menu.classList.contains('active')) {
-        menu.classList.remove('active');
-        overlay.classList.remove('active');
+    if (
+        !menu.contains(event.target) &&
+        !menuToggle.contains(event.target) &&
+        menu.classList.contains("active")
+    ) {
+        menu.classList.remove("active");
+        overlay.classList.remove("active");
     }
 });
 
 // Inicializa el mapa y configura eventos
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
     initMap();
 
-    const calculateButton = document.getElementById('calculateRoute');
-    const clearButton = document.getElementById('clearMarkers');
-    const whatsappButton = document.getElementById('enviarWhatsApp');
+    const calculateButton = document.getElementById("calculateRoute");
+    const clearButton = document.getElementById("clearMarkers");
+    const whatsappButton = document.getElementById("enviarWhatsApp");
 
-    if (calculateButton) calculateButton.addEventListener('click', calculateRoute);
-    if (clearButton) clearButton.addEventListener('click', clearMarkers);
-    if (whatsappButton) whatsappButton.addEventListener('click', enviarWhatsApp);
+    if (calculateButton) calculateButton.addEventListener("click", calculateRoute);
+    if (clearButton) clearButton.addEventListener("click", clearMarkers);
+    if (whatsappButton) whatsappButton.addEventListener("click", enviarWhatsApp);
 });
 
 // Envía los datos a WhatsApp
