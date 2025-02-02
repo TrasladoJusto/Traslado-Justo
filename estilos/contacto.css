@@ -1,4 +1,4 @@
-/* General */
+/* ========== ESTILOS GENERALES ========== */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -8,7 +8,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Header */
+/* ========== HEADER ========== */
 header {
     background-color: #FFFFFF;
     padding: 1px 0;
@@ -20,7 +20,6 @@ header {
     position: relative;
 }
 
-/* Logo */
 .logo-container {
     display: flex;
     align-items: center;
@@ -32,7 +31,7 @@ header {
     object-fit: contain;
 }
 
-/* Menú de navegación */
+/* ========== NAVEGACIÓN PRINCIPAL ========== */
 .menu {
     list-style: none;
     display: flex;
@@ -48,7 +47,6 @@ header {
     font-weight: bold;
 }
 
-/* Botón del menú */
 .menu-toggle {
     display: none;
     font-size: 24px;
@@ -59,88 +57,7 @@ header {
     outline: none;
 }
 
-/* ========== MODO MÓVIL CORREGIDO ========== */
-@media (max-width: 768px) {
-    /* Menú desplegable */
-    .menu {
-        display: none;
-        flex-direction: column;
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 250px;
-        height: 100vh;
-        background-color: #fff;
-        box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        transition: right 0.3s ease;
-        margin: 0;
-        padding: 70px 0 0 0;
-    }
-
-    .menu.active {
-        right: 0;
-        display: flex;
-    }
-
-    .menu li {
-        margin: 15px 0;
-        text-align: right;
-        padding-right: 20px;
-    }
-
-    .menu li a {
-        color: #6a0dad !important;
-        font-size: 16px;
-        padding: 8px 20px;
-        display: block;
-        transition: 0.3s;
-    }
-
-    .menu li a:hover {
-        background: #f8f8f8;
-    }
-
-    /* Botón del menú */
-    .menu-toggle {
-        display: block;
-        position: fixed;
-        top: 12px;
-        right: 15px;
-        z-index: 1001;
-        background: transparent;
-        color: #6a0dad !important;
-        font-size: 24px;
-        border: none;
-        cursor: pointer;
-    }
-
-    /* Overlay */
-    .overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(5px);
-        z-index: 999;
-        transition: 0.3s;
-    }
-
-    .overlay.active {
-        display: block;
-    }
-
-    /* Desenfocar contenido excepto menú */
-    .overlay.active ~ *:not(nav) {
-        filter: blur(5px);
-        pointer-events: none;
-    }
-}
-
-/* Contact Section */
+/* ========== SECCIÓN DE CONTACTO ========== */
 #contact {
     text-align: center;
     padding: 20px;
@@ -167,7 +84,7 @@ header {
     max-width: 100%;
 }
 
-/* Formulario */
+/* ========== FORMULARIO ========== */
 form {
     max-width: 600px;
     margin: 10px auto;
@@ -207,7 +124,7 @@ button:hover, button:focus {
     outline: none;
 }
 
-/* Mapa */
+/* ========== MAPA ========== */
 #map {
     width: 100%;
     height: 400px;
@@ -223,7 +140,7 @@ button:hover, button:focus {
     }
 }
 
-/* Resultados de la ruta */
+/* ========== RESULTADOS ========== */
 #resultados {
     background: #fff;
     border: 1px solid #ddd;
@@ -256,7 +173,7 @@ button:hover, button:focus {
     background-color: #b71c1c;
 }
 
-/* Footer */
+/* ========== FOOTER ========== */
 footer {
     background-color: #4B0082;
     color: #FFFFFF;
@@ -284,4 +201,81 @@ footer nav ul li a {
 
 footer nav ul li a:hover {
     color: #8A2BE2;
+}
+
+/* ========== RESPONSIVE: MÓVIL (max-width: 768px) ========== */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background-color: #fff;
+        box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: right 0.3s ease;
+        margin: 0;
+        padding: 70px 0 0 0;
+    }
+
+    .menu.active {
+        right: 0;
+        display: flex;
+    }
+
+    .menu li {
+        margin: 15px 0;
+        text-align: right;
+        padding-right: 20px;
+    }
+
+    .menu li a {
+        color: #6a0dad !important;
+        font-size: 16px;
+        padding: 8px 20px;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .menu li a:hover {
+        background: #f8f8f8;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: fixed;
+        top: 12px;
+        right: 15px;
+        z-index: 1001;
+        background: transparent;
+        color: #6a0dad !important;
+        font-size: 24px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        z-index: 999;
+        transition: 0.3s;
+    }
+
+    .overlay.active {
+        display: block;
+    }
+
+    .overlay.active ~ *:not(nav) {
+        filter: blur(5px);
+        pointer-events: none;
+    }
 }
