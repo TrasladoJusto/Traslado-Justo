@@ -59,7 +59,7 @@ header {
     outline: none;
 }
 
-/* ========== MODO MÓVIL ========== */
+/* ========== MODO MÓVIL CORREGIDO ========== */
 @media (max-width: 768px) {
     /* Menú desplegable */
     .menu {
@@ -71,11 +71,11 @@ header {
         width: 250px;
         height: 100vh;
         background-color: #fff;
-        box-shadow: -2px 0 15px rgba(0,0,0,0.1);
+        box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
         z-index: 1000;
         transition: right 0.3s ease;
         margin: 0;
-        padding-top: 70px;
+        padding: 70px 20px 0 0;
     }
 
     .menu.active {
@@ -89,6 +89,13 @@ header {
         padding-right: 20px;
     }
 
+    .menu li a {
+        color: #6a0dad !important;
+        font-size: 16px;
+        padding: 8px 15px;
+        display: block;
+    }
+
     /* Botón sin efectos de color */
     .menu-toggle {
         display: block;
@@ -97,7 +104,7 @@ header {
         right: 15px;
         z-index: 1001;
         background: transparent;
-        color: #6a0dad;
+        color: #6a0dad !important;
         font-size: 24px;
         border: none;
         cursor: pointer;
@@ -105,12 +112,12 @@ header {
         transition: none !important;
     }
 
-    /* Eliminar cambios de color */
     .menu-toggle:hover,
     .menu-toggle:focus,
     .menu-toggle:active {
         color: #6a0dad !important;
         background: transparent !important;
+        transform: none !important;
     }
 
     /* Fondo desenfocado */
@@ -121,7 +128,7 @@ header {
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0,0,0,0.5);
+        background: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(5px);
         z-index: 999;
     }
@@ -130,9 +137,10 @@ header {
         display: block;
     }
 
-    /* Desenfocar contenido */
+    /* Desenfocar contenido excepto menú */
     .overlay.active ~ *:not(nav) {
         filter: blur(5px);
+        pointer-events: none;
     }
 }
 
