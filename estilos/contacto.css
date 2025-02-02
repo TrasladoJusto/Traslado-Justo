@@ -59,7 +59,7 @@ header {
     outline: none;
 }
 
-/* ========== MODO MÓVIL ========== */
+/* ========== MODO MÓVIL (MENÚ COPIADO DE CSS1) ========== */
 @media (max-width: 768px) {
     /* Menú desplegable */
     .menu {
@@ -69,79 +69,58 @@ header {
         top: 0;
         right: -100%;
         width: 250px;
-        height: 100vh;
-        margin: 0;
-        padding: 70px 20px 0 0;
+        height: 100%;
         background-color: #fff;
-        box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        transition: right 0.3s ease;
+        padding-top: 60px;
     }
 
     .menu.active {
         right: 0;
-        display: flex;
     }
 
     .menu li {
         margin: 15px 0;
-        text-align: right;
+        text-align: left;
+        padding-left: 20px;
     }
 
-    .menu li a {
-        color: #6a0dad !important;
-        font-size: 16px;
-        padding: 8px 20px;
-        display: block;
-        transition: none !important;
-    }
-
-    /* Eliminar efectos hover/focus/active */
-    .menu li a:hover,
-    .menu li a:focus,
-    .menu li a:active {
-        color: #6a0dad !important;
-        background: transparent !important;
-    }
-
-    /* Botón hamburguesa */
+    /* Botón hamburguesa original de CSS1 */
     .menu-toggle {
         display: block;
-        position: fixed;
-        top: 12px;
-        right: 15px;
-        z-index: 1001;
-        background: transparent;
+        position: static;
         color: #6a0dad;
-        font-size: 24px;
-        border: none;
-        cursor: pointer;
-        outline: none !important;
+        margin-right: 20px;
+        background: none;
+        z-index: auto;
     }
 
-    /* Fondo desenfocado */
+    /* Fondo desenfocado de CSS2 */
     .overlay {
         display: none;
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100vh;
+        height: 100%;
         background-color: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(5px);
-        z-index: 999;
+        z-index: 5;
     }
 
     .overlay.active {
         display: block;
     }
 
-    /* Desenfocar mapa cuando el menú está activo */
+    /* Desenfocar mapa (conservado de CSS2) */
     .overlay.active ~ main #map {
         filter: blur(5px);
-        transition: filter 0.3s;
     }
 }
+
+/* Resto del CSS2 (se mantiene igual) */
 
 /* Contact Section */
 #contact {
