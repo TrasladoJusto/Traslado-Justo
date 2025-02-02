@@ -46,11 +46,6 @@ header {
     color: #6a0dad;
     font-size: 16px;
     font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.menu li a:hover, .menu li a:focus {
-    color: #4a148c;
 }
 
 /* Botón del menú */
@@ -66,20 +61,21 @@ header {
 
 /* ========== MODO MÓVIL ========== */
 @media (max-width: 768px) {
+    /* Menú desplegable */
     .menu {
         display: none;
         flex-direction: column;
         position: fixed;
         top: 0;
         right: -100%;
-        width: 200px; /* Ancho reducido */
-        height: 100%;
-        background-color: #fff;
-        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-        z-index: 10;
-        transition: right 0.3s ease;
+        width: 200px;
+        height: 100vh;
         margin: 0;
-        padding: 70px 15px 0 0; /* Espacio superior y margen derecho */
+        padding: 70px 20px 0 0;
+        background-color: #fff;
+        box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .menu.active {
@@ -88,38 +84,34 @@ header {
     }
 
     .menu li {
-        margin: 12px 0;
-        text-align: right; /* Alineación a la derecha */
+        margin: 15px 0;
+        text-align: right;
     }
 
     .menu li a {
         color: #6a0dad;
         font-size: 16px;
-        padding: 8px 15px; /* Espaciado interno derecho */
+        padding: 8px 20px;
         display: block;
-        transition: none; /* Elimina transición de color */
+        transition: none;
     }
 
-    /* Eliminar cualquier cambio de color */
+    /* Eliminar efectos hover/focus */
     .menu li a:hover,
     .menu li a:focus,
     .menu li a:active {
         color: #6a0dad !important;
-        background-color: transparent !important;
+        background: transparent !important;
     }
 
+    /* Botón menú fijo en esquina derecha */
     .menu-toggle {
         display: block;
         position: fixed;
-        top: 10px;
-        right: 10px;
-        z-index: 15;
-        background-color: transparent;
-    }
-
-    /* Eliminar fondo al presionar el botón */
-    .menu-toggle:active {
-        background-color: transparent;
+        top: 12px;
+        right: 15px;
+        z-index: 1001;
+        background: transparent;
     }
 
     /* Fondo desenfocado */
@@ -129,19 +121,20 @@ header {
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
+        height: 100vh;
         background-color: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(5px);
-        z-index: 5;
+        z-index: 999;
     }
 
     .overlay.active {
         display: block;
     }
 
-    /* Desenfocar el mapa cuando el menú está activo */
+    /* Desenfocar mapa */
     .overlay.active ~ main #map {
         filter: blur(5px);
+        transition: filter 0.3s;
     }
 }
 
