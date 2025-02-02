@@ -70,12 +70,12 @@ header {
         right: -100%;
         width: 250px;
         height: 100vh;
-        margin: 0;
-        padding: 70px 20px 0 0;
         background-color: #fff;
-        box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
+        box-shadow: -2px 0 15px rgba(0,0,0,0.1);
         z-index: 1000;
-        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: right 0.3s ease;
+        margin: 0;
+        padding-top: 70px;
     }
 
     .menu.active {
@@ -86,25 +86,10 @@ header {
     .menu li {
         margin: 15px 0;
         text-align: right;
+        padding-right: 20px;
     }
 
-    .menu li a {
-        color: #6a0dad !important;
-        font-size: 16px;
-        padding: 8px 20px;
-        display: block;
-        transition: none !important;
-    }
-
-    /* Eliminar efectos hover/focus/active */
-    .menu li a:hover,
-    .menu li a:focus,
-    .menu li a:active {
-        color: #6a0dad !important;
-        background: transparent !important;
-    }
-
-    /* Botón hamburguesa */
+    /* Botón sin efectos de color */
     .menu-toggle {
         display: block;
         position: fixed;
@@ -117,14 +102,15 @@ header {
         border: none;
         cursor: pointer;
         outline: none !important;
+        transition: none !important;
     }
 
-    /* Eliminar efectos de hover y active en el botón */
+    /* Eliminar cambios de color */
     .menu-toggle:hover,
     .menu-toggle:focus,
     .menu-toggle:active {
-        background-color: transparent !important;
         color: #6a0dad !important;
+        background: transparent !important;
     }
 
     /* Fondo desenfocado */
@@ -134,8 +120,8 @@ header {
         top: 0;
         left: 0;
         width: 100%;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        background: rgba(0,0,0,0.5);
         backdrop-filter: blur(5px);
         z-index: 999;
     }
@@ -144,10 +130,9 @@ header {
         display: block;
     }
 
-    /* Desenfocar mapa cuando el menú está activo */
-    .overlay.active ~ main #map {
+    /* Desenfocar contenido */
+    .overlay.active ~ *:not(nav) {
         filter: blur(5px);
-        transition: filter 0.3s;
     }
 }
 
