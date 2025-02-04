@@ -116,23 +116,27 @@ function clearMarkers() {
     document.getElementById('tiempo-res').textContent = 'Tiempo estimado: -';
 }
 
-// Función para alternar el menú desplegable
-function toggleMenu() {
-    const menu = document.querySelector(".menu");
-    const overlay = document.getElementById("overlay");
-    menu.classList.toggle("active");
-    overlay.classList.toggle("active");
-}
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            const overlay = document.getElementById('overlay');
+            menu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            
+            // Bloquear scroll
+            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
+        }
 
-// Cerrar menú al hacer clic fuera
-document.addEventListener("click", (e) => {
-    const menu = document.querySelector(".menu");
-    const menuToggle = document.querySelector(".menu-toggle");
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', function(event) {
+            const menu = document.querySelector('.menu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (!menu.contains(event.target) && 
+                !menuToggle.contains(event.target) && 
+                menu.classList.contains('active')) {
+                toggleMenu();
+            }
     
-    if (!menu.contains(e.target) && !menuToggle.contains(e.target) && menu.classList.contains("active")) {
-        menu.classList.remove("active");
-        document.getElementById("overlay").classList.remove("active");
-    }
 });
 // Inicializa el mapa y configura eventos
 document.addEventListener("DOMContentLoaded", () => {
