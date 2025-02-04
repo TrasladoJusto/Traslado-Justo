@@ -1,415 +1,120 @@
-/* General */
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #F4F4F4;
-    color: #333;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="google-adsense-account" content="ca-pub-2938269480263869">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="estilos/img/favicon.svg" />
+    <link rel="shortcut icon" href="estilos/img/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="estilos/img/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Traslado Justo" />
+    <link rel="manifest" href="estilos/img/site.webmanifest" />
+    <title>Inicio - Traslado Justo</title>
+    <link rel="stylesheet" href="estilos/styles.css">
+</head>
+<body>
+    <!-- Fondo desenfocado (solo para móviles) -->
+    <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
 
-/* Header */
-header {
-    background-color: #4B0082;
-    color: #FFFFFF;
-    padding: 20px 0;
-}
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <img src="estilos/img/logo.png" alt="Logo de Traslado Justo" class="logo">
+        </div>
+        <nav class="menu-container">
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="menu">
+                <li><a href="inicio.html" class="active">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="precios.html">Precios</a></li>
+                <li><a href="contacto.html">Reservar</a></li>
+                <li><a href="acerca.html">Acerca</a></li>
+            </ul>
+        </nav>
+    </header>
 
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+    <!-- Main Content -->
+    <main>
+        <div class="hero">
+            <div class="hero-content">
+                <p class="highlight">Comienza tu viaje en sencillos pasos</p>
+                <h1 class="hero-title">¡RESERVA TUS TRASLADOS<br>DESDE O HACIA EL<br>AEROPUERTO</h1>
+                <p class="hero-subtitle">Después de un vuelo agotador, te recibiremos en la terminal y te llevaremos comodamente a tu destino.<br> Nuestros condutores estarán allí esperando, incluso si hay cambios en el itinerario.</p>
+                <a href="contacto.html" class="cta-button">Reserva aquí</a>
+            </div>
+        </div>
 
-header h1 {
-    font-size: 1.8em;
-    margin: 0;
-}
+        <section id="features">
+            <h2>Nuestros Admistradores</h2>
+            <div class="features-container">
+                <div class="feature">
+                    <img src="imagenes/seguridad.svg" alt="Icono de Seguridad">
+                    <h3>Jorge Barrueta</h3>
+                    <p>Con promedio de servicios realizados con exito de 95%.</p>
+                </div>
+                <div class="feature">
+                    <img src="imagenes/rapidez.svg" alt="Icono de Rapidez">
+                    <h3>Jehú Anchante</h3>
+                    <p>El creador de Traslado Justo.</p>
+                </div>
+                <div class="feature">
+                    <img src="imagenes/cobertura.svg" alt="Icono de Cobertura">
+                    <h3>Carlos Montoya</h3>
+                    <p>Experiencia y puntualidad garantizada.</p>
+                </div>
+            </div>
+        </section>
 
-header nav ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
+        <section id="testimonials">
+            <h2>Creadores de la Pagina</h2>
+            <div class="testimonials-container">
+                <div class="testimonial">
+                    <p>“Programador y desarrollador Web<br> de Traslado Justo.”</p>
+                    <h4>- Asahel Anchante</h4>
+                </div>
+                <div class="testimonial">
+                    <p>“Mentor de Innovación y fundador de Traslado Justo.”</p>
+                    <h4>- Jehú Anchante</h4>
+                </div>
+            </div>
+        </section>
+    </main>
 
-header nav ul li {
-    margin: 0 15px;
-}
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2024 Traslado Justo. Todos los derechos reservados.</p>
+            <nav>
+                <ul>
+                    <li><a href="Politicas y Terminos.html">Política de privacidad</a></li>
+                    <li><a href="Politicas y Terminos.html">Términos de servicio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
 
-header nav ul li a {
-    text-decoration: none;
-    color: #FFFFFF;
-    font-weight: bold;
-    transition: color 0.3s;
-}
+    <!-- JavaScript integrado -->
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            const overlay = document.getElementById('overlay');
+            menu.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
 
-header nav ul li a.active {
-    color: #8A2BE2;
-}
+        // Cerrar el menú al hacer clic fuera de él
+        document.addEventListener('click', function(event) {
+            const menu = document.querySelector('.menu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            const overlay = document.getElementById('overlay');
 
-header nav ul li a:hover {
-    color: #8A2BE2;
-}
-
-/* Fondo del héroe */
-.hero {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background: url('img/mi-auto.png') no-repeat center center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-/* Cuadro semiopaco */
-.hero-content {
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 30px;
-    border-radius: 10px;
-    max-width: 500px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Texto destacado */
-.highlight {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #4B0082;
-    margin-bottom: 10px;
-}
-
-/* Título principal */
-.hero-title {
-    font-size: 2.5em;
-    font-weight: bold;
-    color: #4B0082;
-    line-height: 1.2;
-    margin-bottom: 20px;
-}
-
-/* Subtítulo */
-.hero-subtitle {
-    font-size: 1em;
-    color: #333;
-    line-height: 1.5;
-    margin-bottom: 20px;
-}
-
-/* Botón de llamada a la acción */
-.cta-button {
-    display: inline-block;
-    background-color: #4B0082;
-    color: #FFFFFF;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.cta-button:hover {
-    background-color: #8A2BE2;
-}
-
-/* Responsive: centrar contenido en pantallas pequeñas */
-@media (max-width: 768px) {
-    .hero {
-        padding-left: 20px;
-        justify-content: center;
-    }
-
-    .hero-content {
-        max-width: 90%;
-    }
-
-    /* Menú desplegable móvil */
-    .menu {
-        display: none;
-        flex-direction: column;
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 250px;
-        height: 100%;
-        background-color: #fff;
-        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-        z-index: 10;
-        transition: right 0.3s ease;
-    }
-
-    .menu.active {
-        right: 0;
-    }
-
-    .menu li {
-        margin: 15px 0;
-    }
-
-    .menu-toggle {
-        display: block;
-        font-size: 24px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: #6a0dad;
-    }
-
-    /* Fondo desenfocado */
-    .overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(5px);
-        z-index: 5;
-    }
-
-    .overlay.active {
-        display: block;
-    }
-}
-
-/* Features Section */
-#features {
-    padding: 50px 20px;
-    background-color: #EFEFEF;
-    text-align: center;
-    color: #333;
-}
-
-#features h2 {
-    font-size: 2em;
-    margin-bottom: 30px;
-    color: #4B0082;
-}
-
-.features-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-.feature {
-    background-color: #FFFFFF;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    width: 300px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.feature:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-.feature img {
-    width: 60px;
-    margin-bottom: 15px;
-}
-
-.feature h3 {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-}
-
-.feature p {
-    font-size: 1em;
-    line-height: 1.5;
-    color: #666;
-}
-
-/* Testimonials Section */
-#testimonials {
-    padding: 50px 20px;
-    background-color: #4B0082;
-    text-align: center;
-    color: #FFFFFF;
-}
-
-#testimonials h2 {
-    font-size: 2em;
-    margin-bottom: 30px;
-}
-
-.testimonials-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-.testimonial {
-    background-color: #FFFFFF;
-    color: #333;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    width: 300px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.testimonial:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-.testimonial p {
-    font-size: 1em;
-    margin-bottom: 15px;
-    font-style: italic;
-    color: #666;
-}
-
-.testimonial h4 {
-    font-size: 1em;
-    color: #4B0082;
-}
-
-/* Footer */
-footer {
-    background-color: #4B0082;
-    color: #FFFFFF;
-    padding: 20px 0;
-    text-align: center;
-}
-
-footer nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-}
-
-footer nav ul li {
-    margin: 0 10px;
-}
-
-footer nav ul li a {
-    color: #FFFFFF;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-footer nav ul li a:hover {
-    color: #8A2BE2;
-}
-
-/* General del header */
-header {
-    background-color: #FFFFFF;
-    padding: 10px 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Barra de navegación */
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 50px;
-    background-color: #fff;
-    padding: 0 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
-
-/* Logo */
-.logo-container {
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-}
-
-.logo {
-    height: 30px;
-    width: auto;
-    object-fit: contain;
-}
-
-/* Menú de navegación */
-.menu {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.menu li a {
-    text-decoration: none;
-    color: #6a0dad;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-/* Botón del menú (desplegable) */
-.menu-toggle {
-    display: none;
-}
-
-/* Estilo del menú desplegable en modo móvil */
-@media (max-width: 768px) {
-    header {
-        width: 95%;
-        margin: 0;
-    }
-
-    header .container {
-        max-width: 100%;
-        padding: 0 10px;
-    }
-
-    .hero {
-        background-size: cover;
-        background-position: center;
-        overflow: hidden;
-    }
-
-    .menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 50px;
-        right: 20px;
-        background-color: #fff;
-        padding: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        z-index: 10;
-    }
-
-    .menu.active {
-        display: flex;
-    }
-
-    .menu li {
-        margin: 10px 0;
-    }
-
-    .menu-toggle {
-        display: block;
-        font-size: 24px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: #6a0dad;
-    }
-}
+            // Verificar si el clic fue fuera del menú y del botón de alternar
+            if (!menu.contains(event.target) && !menuToggle.contains(event.target) && menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
