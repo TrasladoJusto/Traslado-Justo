@@ -209,6 +209,25 @@ footer nav ul li a:hover {
     color: #8A2BE2;
 }
 
+/* ========== MENÚ MÓVIL CORREGIDO (max-width: 768px) ========== */
+@media (max-width: 768px) {
+    /* Botón Hamburguesa */
+    .menu-toggle {
+        display: block !important;
+        position: fixed;
+        top: 12px !important;
+        right: 15px !important; /* Ajuste final posición esquina */
+        z-index: 1003;
+        background: transparent !important;
+        color: #6a0dad !important;
+        font-size: 28px;
+        padding: 0;
+        margin: 0;
+        border: none !important;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
 /* ========== MENÚ MÓVIL MEJORADO ========== */
 .menu-toggle {
     display: none;
