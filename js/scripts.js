@@ -116,27 +116,27 @@ function clearMarkers() {
     document.getElementById('tiempo-res').textContent = 'Tiempo estimado: -';
 }
 
-        function toggleMenu() {
-            const menu = document.querySelector('.menu');
-            const overlay = document.getElementById('overlay');
-            menu.classList.toggle('active');
-            overlay.classList.toggle('active');
-            
-            // Bloquear scroll
-            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
-        }
-
-        // Cerrar menú al hacer clic fuera
-        document.addEventListener('click', function(event) {
-            const menu = document.querySelector('.menu');
-            const menuToggle = document.querySelector('.menu-toggle');
-            
-            if (!menu.contains(event.target) && 
-                !menuToggle.contains(event.target) && 
-                menu.classList.contains('active')) {
-                toggleMenu();
-            }
+function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    const overlay = document.getElementById('overlay');
     
+    menu.classList.toggle('active');
+    overlay.classList.toggle('active');
+    
+    // Bloquear scroll
+    document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
+}
+
+// Cerrar menú al hacer clic fuera
+document.addEventListener('click', function(event) {
+    const menu = document.querySelector('.menu');
+    const menuToggle = document.querySelector('.menu-toggle');
+    
+    if (!menu.contains(event.target) && 
+        !menuToggle.contains(event.target) && 
+        menu.classList.contains('active')) {
+        toggleMenu();
+    }
 });
 // Inicializa el mapa y configura eventos
 document.addEventListener("DOMContentLoaded", () => {
