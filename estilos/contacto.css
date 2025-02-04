@@ -209,62 +209,92 @@ footer nav ul li a:hover {
     color: #8A2BE2;
 }
 
-/* ========== MENÚ MÓVIL FUNCIONAL ========== */
+/* ========== MENÚ MÓVIL CORREGIDO (max-width: 768px) ========== */
+@media (max-width: 768px) {
+    /* Botón Hamburguesa */
+    .menu-toggle {
+        display: block !important;
+        position: fixed;
+        top: 12px !important;
+        right: 15px !important; /* Ajuste final posición esquina */
+        z-index: 1003;
+        background: transparent !important;
+        color: #6a0dad !important;
+        font-size: 28px;
+        padding: 0;
+        margin: 0;
+        border: none !important;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+
+/* ========== MENÚ MÓVIL MEJORADO ========== */
 .menu-toggle {
     display: none;
     position: fixed;
     top: 12px;
     right: 15px;
-    z-index: 1001;
-    font-size: 28px;
+    z-index: 1003;
     background: transparent !important;
     color: #6a0dad !important;
+    font-size: 28px;
     border: none !important;
-    padding: 0;
-    margin: 0;
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-/* Menú desplegable */
-.menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.menu-toggle:hover,
+.menu-toggle:focus {
+    background: transparent !important;
+    color: #6a0dad !important;
 }
 
-    /* Botón posicionado correctamente */
-    .menu-toggle {
-        display: block !important;
-        right: 15px !important;
-    }
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    z-index: 1001;
+    transition: opacity 0.4s ease;
+    opacity: 0;
+}
 
-    /* Menú móvil */
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
     .menu {
         display: none;
+        flex-direction: column;
         position: fixed;
         top: 0;
         right: -100%;
-        width: 75%;
-        max-width: 300px;
+        width: 280px;
         height: 100vh;
         background: #fff;
-        box-shadow: -15px 0 25px rgba(0,0,0,0.1);
-        z-index: 1000;
-        transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        margin: 0;
-        padding: 70px 20px 20px;
+        box-shadow: -15px 0 30px rgba(0,0,0,0.15);
+        z-index: 1002;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 80px 0 20px;
     }
 
     .menu.active {
         right: 0;
         display: flex;
-        flex-direction: column;
     }
 
     .menu li {
-        margin: 15px 0;
-        text-align: right;
+        margin: 12px 0;
+        padding: 0 20px;
         width: 100%;
+        text-align: right;
     }
 
     .menu li a {
@@ -272,8 +302,9 @@ footer nav ul li a:hover {
         font-size: 18px;
         font-weight: 500;
         padding: 12px 25px;
-        display: block;
+        display: inline-block;
         transition: all 0.3s ease;
+        border-radius: 6px;
     }
 
     .menu li a:hover {
@@ -281,29 +312,8 @@ footer nav ul li a:hover {
         transform: translateX(-10px);
     }
 
-    /* Overlay funcional */
-    .overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-        backdrop-filter: blur(8px);
-        z-index: 999;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .overlay.active {
-        display: block;
-        opacity: 1;
-    }
-
-    /* Efecto de desenfoque */
-    .overlay.active ~ *:not(header):not(nav):not(.menu) {
-        filter: blur(8px);
+    .overlay.active ~ *:not(.menu) {
+        filter: blur(5px);
         pointer-events: none;
     }
 }
