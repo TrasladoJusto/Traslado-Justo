@@ -31,38 +31,6 @@ header {
     object-fit: contain;
 }
 
-/* ========== NAVEGACIÓN PRINCIPAL ========== */
-.menu {
-    list-style: none;
-    display: flex;
-    gap: 50px;
-    margin-left: 0;
-    margin-right: 35px;
-}
-
-.menu li a {
-    text-decoration: none;
-    color: #6a0dad;
-    font-size: 16px;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.menu li a:hover {
-    color: #4a148c;
-}
-
-.menu-toggle {
-    display: none;
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #6a0dad;
-    outline: none;
-    z-index: 1001;
-}
-
 /* ========== SECCIÓN DE CONTACTO ========== */
 #contact {
     text-align: center;
