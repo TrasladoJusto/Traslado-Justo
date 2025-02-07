@@ -31,11 +31,12 @@ header {
     object-fit: contain;
 }
 
-/* ========== NAVEGACIÓN PRINCIPAL (DESKTOP) ========== */
+/* ========== NAVEGACIÓN PRINCIPAL ========== */
 .menu {
     list-style: none;
     display: flex;
     gap: 50px;
+    margin-left: 0;
     margin-right: 35px;
 }
 
@@ -53,6 +54,13 @@ header {
 
 .menu-toggle {
     display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6a0dad;
+    outline: none;
+    z-index: 1001;
 }
 
 /* ========== SECCIÓN DE CONTACTO ========== */
@@ -201,38 +209,70 @@ footer nav ul li a:hover {
     color: #8A2BE2;
 }
 
-/* ========== MENÚ MÓVIL FUNCIONAL ========== */
+/* ========== MENÚ MÓVIL CORREGIDO (max-width: 768px) ========== */
 @media (max-width: 768px) {
     /* Botón Hamburguesa */
     .menu-toggle {
         display: block !important;
         position: fixed;
         top: 12px !important;
-        right: 15px !important;
+        right: 15px !important; /* Ajuste final posición esquina */
         z-index: 1003;
         background: transparent !important;
         color: #6a0dad !important;
         font-size: 28px;
-        border: none !important;
         padding: 0;
         margin: 0;
+        border: none !important;
         cursor: pointer;
+        transition: transform 0.3s ease;
     }
 
-    /* Menú Desplegable */
+
+/* ========== MENÚ MÓVIL FUNCIONAL ========== */
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 12px;
+    right: 15px;
+    z-index: 1001;
+    font-size: 28px;
+    background: transparent !important;
+    color: #6a0dad !important;
+    border: none !important;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+/* Menú desplegable */
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    /* Botón posicionado correctamente */
+    .menu-toggle {
+        display: block !important;
+        right: 15px !important;
+    }
+
+    /* Menú móvil */
     .menu {
         display: none;
         position: fixed;
         top: 0;
         right: -100%;
-        width: 280px;
+        width: 75%;
+        max-width: 300px;
         height: 100vh;
         background: #fff;
-        box-shadow: -15px 0 30px rgba(0,0,0,0.15);
-        z-index: 1002;
-        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -15px 0 25px rgba(0,0,0,0.1);
+        z-index: 1000;
+        transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         margin: 0;
-        padding: 80px 0 20px;
+        padding: 70px 20px 20px;
     }
 
     .menu.active {
@@ -241,10 +281,8 @@ footer nav ul li a:hover {
         flex-direction: column;
     }
 
-    /* Items del Menú */
     .menu li {
-        margin: 12px 0;
-        padding: 0 20px;
+        margin: 15px 0;
         text-align: right;
         width: 100%;
     }
@@ -263,7 +301,7 @@ footer nav ul li a:hover {
         transform: translateX(-10px);
     }
 
-    /* Overlay */
+    /* Overlay funcional */
     .overlay {
         display: none;
         position: fixed;
@@ -273,9 +311,9 @@ footer nav ul li a:hover {
         height: 100%;
         background: rgba(0,0,0,0.5);
         backdrop-filter: blur(8px);
-        z-index: 1001;
+        z-index: 999;
         opacity: 0;
-        transition: opacity 0.4s ease;
+        transition: opacity 0.3s ease;
     }
 
     .overlay.active {
@@ -283,8 +321,8 @@ footer nav ul li a:hover {
         opacity: 1;
     }
 
-    /* Efecto de Desenfoque */
-    .overlay.active ~ *:not(.menu) {
+    /* Efecto de desenfoque */
+    .overlay.active ~ *:not(header):not(nav):not(.menu) {
         filter: blur(8px);
         pointer-events: none;
     }
