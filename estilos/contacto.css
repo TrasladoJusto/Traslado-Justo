@@ -215,26 +215,23 @@ footer nav ul li a:hover {
 }
 
 /* ========== MENÚ MÓVIL CORREGIDO (max-width: 768px) ========== */
-.menu-toggle {
-    display: none;
-    position: fixed;
-    top: 12px; /* Asegurarse de que esté en la parte superior */
-    right: 15px; /* Asegurarse de que esté en la esquina derecha */
-    z-index: 1001;
-    font-size: 28px;
-    background: transparent;
-    color: #6a0dad;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-}
-
 @media (max-width: 768px) {
+    /* Botón Hamburguesa */
     .menu-toggle {
-        display: block; /* Mostrar solo en dispositivos móviles */
+        display: block !important;
+        position: fixed;
+        top: 12px !important;
+        right: 15px !important; /* Ajuste final posición esquina */
+        z-index: 1003;
+        background: transparent !important;
+        color: #6a0dad !important;
+        font-size: 28px;
+        padding: 0;
+        margin: 0;
+        border: none !important;
+        cursor: pointer;
+        transition: transform 0.3s ease;
     }
-}
 
 
 /* ========== MENÚ MÓVIL FUNCIONAL ========== */
@@ -267,47 +264,30 @@ footer nav ul li a:hover {
     }
 
     /* Menú móvil */
-    .menu {
-        display: none;
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 75%;
-        max-width: 300px;
-        height: 100vh;
-        background: #fff;
-        box-shadow: -15px 0 25px rgba(0,0,0,0.1);
-        z-index: 1000;
-        transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        margin: 0;
-        padding: 70px 20px 20px;
-    }
+.menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    max-width: 300px;
+    height: 100vh;
+    background: transparent; /* Cambiar a transparente */
+    z-index: 1000;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 0;
+    padding: 70px 20px 20px;
+}
 
-    .menu.active {
-        right: 0;
-        display: flex;
-        flex-direction: column;
-    }
+.menu.active {
+    right: 0;
+    display: flex;
+    flex-direction: column;
+}
 
-    .menu li {
-        margin: 15px 0;
-        text-align: right;
-        width: 100%;
-    }
-
-    .menu li a {
-        color: #6a0dad !important;
-        font-size: 18px;
-        font-weight: 500;
-        padding: 12px 25px;
-        display: block;
-        transition: all 0.3s ease;
-    }
-
-    .menu li a:hover {
-        background: #f3e9ff;
-        transform: translateX(-10px);
-    }
+.menu li a:hover {
+    background: rgba(243, 233, 255, 0.5); /* Fondo semi-transparente al pasar el ratón */
+}
 
     /* Overlay funcional */
     .overlay {
