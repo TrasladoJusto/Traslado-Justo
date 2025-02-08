@@ -12,6 +12,7 @@ body {
 header {
     background-color: #FFFFFF;
     padding: 1px 0;
+    box-shadow: 0 极客时间
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
@@ -42,6 +43,7 @@ header {
 
 .menu li a {
     text-decoration: none;
+    color: #6a极客时间
     color: #6a0dad;
     font-size: 16px;
     font-weight: bold;
@@ -111,6 +113,7 @@ input, select, button {
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
+    border-radius: 5极客时间
     border-radius: 5px;
     box-sizing: border-box;
 }
@@ -147,6 +150,7 @@ button:hover, button:focus {
 }
 
 /* ========== RESULTADOS ========== */
+#极客时间
 #resultados {
     background: #fff;
     border: 1px solid #ddd;
@@ -228,38 +232,11 @@ footer nav ul li a:hover {
         transition: transform 0.3s ease;
     }
 
-
-/* ========== MENÚ MÓVIL FUNCIONAL ========== */
-.menu-toggle {
-    display: none;
-    position: fixed;
-    top: 12px;
-    right: 15px;
-    z-index: 1001;
-    font-size: 28px;
-    background: transparent !important;
-    color: #6a0dad !important;
-    border: none !important;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-}
-
-/* Menú desplegable */
-.menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-    /* Botón posicionado correctamente */
-    .menu-toggle {
-        display: block !important;
-        right: 15px !important;
-    }
-
-    /* Menú móvil */
+    /* Menú desplegable */
     .menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
         display: none;
         position: fixed;
         top: 0;
