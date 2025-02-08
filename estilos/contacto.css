@@ -235,19 +235,26 @@ footer nav ul li a:hover {
 
 
 /* ========== MENÚ MÓVIL FUNCIONAL ========== */
+/* Botón de Hamburguesa */
 .menu-toggle {
-    display: none;
+    display: none; /* Ocultar por defecto */
     position: fixed;
-    top: 12px;
-    right: 15px;
+    top: 12px; /* Posición superior */
+    right: 15px; /* Posición derecha */
     z-index: 1001;
     font-size: 28px;
-    background: transparent !important;
-    color: #6a0dad !important;
-    border: none !important;
+    background: transparent;
+    color: #6a0dad;
+    border: none;
+    cursor: pointer;
     padding: 0;
     margin: 0;
-    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Mostrar solo en móviles */
+    }
 }
 
 /* Menú desplegable */
