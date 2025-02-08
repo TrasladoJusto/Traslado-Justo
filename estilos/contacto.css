@@ -215,23 +215,26 @@ footer nav ul li a:hover {
 }
 
 /* ========== MENÚ MÓVIL CORREGIDO (max-width: 768px) ========== */
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 12px; /* Asegurarse de que esté en la parte superior */
+    right: 15px; /* Asegurarse de que esté en la esquina derecha */
+    z-index: 1001;
+    font-size: 28px;
+    background: transparent;
+    color: #6a0dad;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
 @media (max-width: 768px) {
-    /* Botón Hamburguesa */
     .menu-toggle {
-        display: block !important;
-        position: fixed;
-        top: 12px !important;
-        right: 15px !important; /* Ajuste final posición esquina */
-        z-index: 1003;
-        background: transparent !important;
-        color: #6a0dad !important;
-        font-size: 28px;
-        padding: 0;
-        margin: 0;
-        border: none !important;
-        cursor: pointer;
-        transition: transform 0.3s ease;
+        display: block; /* Mostrar solo en dispositivos móviles */
     }
+}
 
 
 /* ========== MENÚ MÓVIL FUNCIONAL ========== */
