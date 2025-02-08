@@ -290,24 +290,24 @@ footer nav ul li a:hover {
 }
 
     /* Overlay funcional */
-    .overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-        backdrop-filter: blur(8px);
-        z-index: 999;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
 
-    .overlay.active {
-        display: block;
-        opacity: 1;
-    }
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
     /* Efecto de desenfoque */
     .overlay.active ~ *:not(header):not(nav):not(.menu) {
         filter: blur(8px);
