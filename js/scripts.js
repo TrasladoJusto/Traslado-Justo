@@ -3,16 +3,46 @@ let routingControl;
 let markerOrigen = null;
 let markerDestino = null;
 
-// Inicializa el mapa centrado en Lima, Perú
+// ========== CONTROL DE NAVEGACIÓN (CORRECCIONES) ========== //
+const menuToggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('.menu');
+const overlay = document.querySelector('.overlay');
+
+function toggleMenu() {
+    menu.classList.toggle('active');
+    overlay.classList.toggle('active');
+    document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
+    menuToggle.innerHTML = menu.classList.contains('active') ? '✕' : '☰'; // Icono dinámico
+}
+
+// Event listeners mejorados
+menuToggle.addEventListener('click', toggleMenu);
+overlay.addEventListener('click', toggleMenu);
+
+document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target) && !menuToggle.contains(e.target) && menu.classList.contains('active')) {
+        toggleMenu();
+    }
+});
+
+window.addEventListener('scroll', () => { // Cerrar al hacer scroll
+    if (menu.classList.contains('active')) toggleMenu();
+});
+
+document.querySelectorAll('.menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) toggleMenu();
+    });
+});
+
+// ========== FUNCIONALIDAD ORIGINAL DEL MAPA (MANTENIDA) ========== //
 function initMap() {
     map = L.map('map').setView([-12.046374, -77.042793], 13);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}/.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
 }
 
-// Geocodifica una dirección a coordenadas
 async function geocodeAddress(address) {
     const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
     try {
@@ -29,7 +59,6 @@ async function geocodeAddress(address) {
     }
 }
 
-// Marca una ubicación en el mapa
 function addMarker(coordinates, isOrigin) {
     const icon = L.icon({
         iconUrl: isOrigin 
@@ -49,7 +78,7 @@ function addMarker(coordinates, isOrigin) {
     }
 }
 
-// Calcula y muestra la ruta en el mapa
+// ========== CÁLCULO DE RUTA (OPTIMIZADO) ========== //
 async function calculateRoute() {
     const originInput = document.getElementById('origen').value.trim();
     const destinationInput = document.getElementById('destino').value.trim();
@@ -60,8 +89,11 @@ async function calculateRoute() {
     }
 
     try {
-        const origin = await geocodeAddress(originInput);
-        const destination = await geocodeAddress(destinationInput);
+        // Geocodificación paralela
+        const [origin, destination] = await Promise.all([
+            geocodeAddress(originInput),
+            geocodeAddress(destinationInput)
+        ]);
 
         addMarker(origin, true);
         addMarker(destination, false);
@@ -94,7 +126,7 @@ async function calculateRoute() {
     }
 }
 
-// Limpia marcadores, rutas y detalles
+// ========== LIMPIEZA DE MARCADORES (MANTENIENDO LÓGICA ORIGINAL) ========== //
 function clearMarkers() {
     if (markerOrigen) {
         map.removeLayer(markerOrigen);
@@ -116,28 +148,7 @@ function clearMarkers() {
     document.getElementById('tiempo-res').textContent = 'Tiempo estimado: -';
 }
 
-// Función para alternar menú
-function toggleMenu() {
-    document.querySelector('.menu').classList.toggle('active');
-    document.querySelector('.overlay').classList.toggle('active');
-}
-
-// Cerrar menú al hacer clic en overlay
-document.querySelector('.overlay').addEventListener('click', toggleMenu);
-// Inicializa el mapa y configura eventos
-document.addEventListener("DOMContentLoaded", () => {
-    initMap();
-
-    const calculateButton = document.getElementById("calculateRoute");
-    const clearButton = document.getElementById("clearMarkers");
-    const whatsappButton = document.getElementById("enviarWhatsApp");
-
-    if (calculateButton) calculateButton.addEventListener("click", calculateRoute);
-    if (clearButton) clearButton.addEventListener("click", clearMarkers);
-    if (whatsappButton) whatsappButton.addEventListener("click", enviarWhatsApp);
-});
-
-// Envía los datos a WhatsApp
+// ========== ENVÍO WHATSAPP (MANTENIENDO FORMATO ORIGINAL) ========== //
 function enviarWhatsApp(event) {
     event.preventDefault();
 
@@ -169,3 +180,16 @@ function enviarWhatsApp(event) {
     const url = `https://wa.me/51968726558?text=${encodeURIComponent(mensaje)}`;
     window.open(url, '_blank');
 }
+
+// ========== INICIALIZACIÓN (MANTENIENDO EVENTOS ORIGINALES) ========== //
+document.addEventListener("DOMContentLoaded", () => {
+    initMap();
+
+    const calculateButton = document.getElementById("calculateRoute");
+    const clearButton = document.getElementById("clearMarkers");
+    const whatsappButton = document.getElementById("enviarWhatsApp");
+
+    if (calculateButton) calculateButton.addEventListener("click", calculateRoute);
+    if (clearButton) clearButton.addEventListener("click", clearMarkers);
+    if (whatsappButton) whatsappButton.addEventListener("click", enviarWhatsApp);
+});
