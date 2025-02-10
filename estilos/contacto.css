@@ -79,41 +79,40 @@ header {
     z-index: 1001;
 }
 
-/* ========== MENÚ MÓVIL OPTIMIZADO ========== */
+/* ========== MENÚ MÓVIL CORREGIDO ========== */
 @media (max-width: 768px) {
     header {
-        height: 50px;
-        padding: 0 15px;
-    }
-
-    .logo-container {
-        margin-left: 15px;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        height: 60px;
     }
 
     .menu-toggle {
         display: block;
-        position: fixed;
-        right: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 24px;
-        padding: 8px;
+        position: fixed !important;
+        top: 12px !important;
+        right: 15px !important;
+        background: transparent !important;
+        margin: 0;
+        z-index: 1001;
     }
 
     .menu {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 85%;
+        width: 75%;
         max-width: 300px;
         height: 100vh;
-        background: #fff;
-        box-shadow: -8px 0 20px rgba(0,0,0,0.15);
-        flex-direction: column;
+        background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(10px);
+        box-shadow: -15px 0 25px rgba(0,0,0,0.05);
         padding: 70px 20px 20px;
-        transition: right 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         margin: 0;
-        z-index: 1000;
+        transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 999;
     }
 
     .menu.active {
@@ -121,25 +120,24 @@ header {
     }
 
     .menu li {
-        margin: 14px 0;
-        padding-bottom: 10px;
-        border-bottom: 1px solid rgba(0,0,0,0.05);
-    }
-
-    .menu li:last-child {
-        border-bottom: none;
+        margin: 15px 0;
+        padding: 0;
+        background: transparent;
+        border: none;
     }
 
     .menu li a {
-        font-size: 17px;
-        padding: 12px 20px;
+        color: #6a0dad !important;
+        font-size: 18px;
+        padding: 12px 25px !important;
         display: block;
-        transition: transform 0.2s ease;
+        border-radius: 8px;
+        transition: all 0.3s;
     }
 
     .menu li a:hover {
+        background: rgba(243,233,255,0.3);
         transform: translateX(-8px);
-        box-shadow: 2px 2px 12px rgba(0,0,0,0.08);
     }
 
     .overlay {
@@ -151,17 +149,11 @@ header {
         height: 100%;
         background: rgba(0,0,0,0.4);
         backdrop-filter: blur(6px);
-        z-index: 999;
+        z-index: 998;
     }
 
     .overlay.active {
         display: block;
-    }
-
-    @supports (-webkit-backdrop-filter: none) {
-        .overlay {
-            -webkit-backdrop-filter: blur(6px);
-        }
     }
 }
 
