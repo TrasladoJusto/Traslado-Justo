@@ -23,12 +23,14 @@
     <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
 
     <!-- Header -->
-    <header>
+  <header>
+    <div class="header-container">
         <div class="logo-container">
-            <img src="estilos/img/logo.png" alt="Logo de Traslado Justo" class="logo">
+            <img src="logo.png" class="logo" alt="Logo">
         </div>
-        <nav class="menu-container">
-            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menú">☰</button>
+        
+        <nav>
+            <button class="menu-toggle">☰</button>
             <ul class="menu">
                 <li><a href="inicio.html" class="active">Inicio</a></li>
                 <li><a href="servicios.html">Servicios</a></li>
@@ -37,6 +39,8 @@
                 <li><a href="acerca.html">Acerca</a></li>
             </ul>
         </nav>
+    </div>
+    <div class="overlay"></div>
     </header>
     
     <!-- Main Section -->
