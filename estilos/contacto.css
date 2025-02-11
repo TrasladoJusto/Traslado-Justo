@@ -1,4 +1,4 @@
-/* ========== ESTILOS GENERALES ========== */
+/* ========== ESTILOS BASE ========== */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -6,285 +6,230 @@ body {
     background-color: #F4F4F4;
     color: #333;
     overflow-x: hidden;
+    padding-top: 60px; /* Espacio para header fijo */
 }
 
-/* ========== HEADER ========== */
+/* ========== HEADER ADAPTATIVO ========== */
 header {
-    background-color: #FFFFFF;
-    padding: 1px 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: #FFFFFF;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 48px;
-    position: relative;
+    padding: 0 20px;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
-    margin-left: 30px;
 }
 
 .logo {
     height: 30px;
-    object-fit: contain;
+    width: auto;
 }
 
-/* ========== NAVEGACIÓN PRINCIPAL ========== */
-.menu {
-    list-style: none;
-    display: flex;
-    gap: 50px;
-    margin-left: 0;
-    margin-right: 35px;
-}
-
-.menu li a {
-    text-decoration: none;
-    color: #6a0dad;
-    font-size: 16px;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.menu li a:hover {
-    color: #4a148c;
-}
-
+/* ========== NAVEGACIÓN MOBILE-FIRST ========== */
 .menu-toggle {
     display: none;
-    font-size: 24px;
     background: none;
     border: none;
     cursor: pointer;
     color: #6a0dad;
-    outline: none;
+    font-size: 28px;
     z-index: 1001;
+    padding: 5px;
 }
 
-/* ========== CORRECCIONES DEFINITIVAS ========== */
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px;
+}
+
+/* ========== DISEÑO MOBILE (PANTALLAS PEQUEÑAS) ========== */
 @media (max-width: 768px) {
-    /* 1. Header fijo */
-    header {
-        position: fixed !important;
-        width: 100% !important;
-        top: 0 !important;
-        z-index: 1000 !important;
-        height: 60px !important; /* Altura consistente */
+    body {
+        padding-top: 60px; /* Ajuste para header fijo */
     }
 
-    /* 2. Botón posicionado correctamente */
     .menu-toggle {
-        display: block !important;
-        position: fixed !important;
-        top: 15px !important; /* Ajuste fino de posición */
-        right: 15px !important;
-        z-index: 1001 !important;
-        background: transparent !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        transform: none !important; /* Eliminar transformaciones conflictivas */
+        display: block;
+        position: fixed;
+        top: 12px;
+        right: 15px;
     }
 
-    /* 3. Menú transparente con efecto vidrio */
     .menu {
-        background: rgba(255,255,255,0.1) !important;
-        backdrop-filter: blur(15px) !important;
-        -webkit-backdrop-filter: blur(15px) !important; /* Soporte para Safari */
-        box-shadow: none !important;
-        position: fixed !important;
-        top: 0 !important;
-        right: -100% !important;
-        width: 75% !important;
-        height: 100vh !important;
-        margin: 0 !important;
-        padding: 80px 25px 25px !important; /* Espaciado mejorado */
-        transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important; /* Animación suave */
-        z-index: 999 !important;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 85%;
+        max-width: 320px;
+        height: 100vh;
+        background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        flex-direction: column;
+        padding: 80px 25px;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -15px 0 30px rgba(0,0,0,0.1);
+        z-index: 999;
     }
 
     .menu.active {
-        right: 0 !important;
+        right: 0;
     }
 
-    /* 4. Elementos del menú */
     .menu li {
-        margin: 18px 0 !important; /* Espaciado vertical aumentado */
-        text-align: right !important;
-        width: 100% !important;
-        background: transparent !important;
-        border: none !important;
-        padding: 0 !important;
+        margin: 15px 0;
+        text-align: right;
     }
 
     .menu li a {
-        color: #6a0dad !important;
-        font-size: 18px !important;
-        padding: 15px 25px !important; /* Área táctil más grande */
-        display: block !important;
-        border-radius: 10px !important;
-        transition: all 0.3s ease !important;
-        background: rgba(255,255,255,0.7) !important; /* Fondo opciones */
+        display: block;
+        padding: 15px 25px;
+        font-size: 18px;
+        color: #6a0dad;
+        border-radius: 8px;
+        transition: all 0.3s;
+        background: rgba(243,233,255,0.3);
     }
 
-    /* 5. Overlay funcional */
+    .menu li a:hover {
+        transform: translateX(-10px);
+        background: rgba(243,233,255,0.5);
+    }
+
     .overlay {
-        display: none !important;
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        background: rgba(0,0,0,0.4) !important;
-        backdrop-filter: blur(8px) !important;
-        -webkit-backdrop-filter: blur(8px) !important;
-        z-index: 998 !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.4);
+        backdrop-filter: blur(5px);
+        z-index: 998;
+        display: none;
     }
 
     .overlay.active {
-        display: block !important;
+        display: block;
     }
 }
 
-/* ========== (TUS ESTILOS ORIGINALES - SIN CAMBIOS) ========== */
+/* ========== SECCIÓN DE CONTACTO RESPONSIVA ========== */
 #contact {
-    text-align: center;
-    padding: 20px;
-    background-color: #FFFFFF;
-}
-
-#contact h2 {
-    font-size: 2em;
-    color: #4B0082;
-    margin-bottom: 15px;
-}
-
-#contact p {
-    font-size: 1em;
-    color: #555;
-    margin-bottom: 20px;
+    padding: 2rem 1rem;
 }
 
 .contact-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-    max-width: 100%;
+    display: grid;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 form {
-    max-width: 600px;
-    margin: 10px auto;
-    padding: 15px;
     background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 input, select, button {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+    padding: 12px;
+    margin-bottom: 1rem;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #6a0dad;
+    outline: none;
 }
 
 button {
-    background-color: #6a1b9a;
-    color: #fff;
+    background: #6a1b9a;
+    color: white;
     border: none;
+    padding: 12px 24px;
+    font-size: 16px;
     cursor: pointer;
-    font-size: 14px;
-    padding: 10px;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s;
 }
 
-button:hover, button:focus {
-    background-color: #4a148c;
-    outline: none;
+button:hover {
+    background: #4a148c;
 }
 
 #map {
     width: 100%;
     height: 400px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 12px;
+    border: 2px solid #eee;
 }
 
-@media (min-width: 769px) {
-    #map {
-        max-width: 80%;
-        height: 500px;
-        margin: 0 auto;
-    }
-}
-
-#resultados {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    margin-top: 15px;
-    font-size: 1.1em;
-}
-
-#resultados p {
-    margin: 10px 0;
-    font-weight: bold;
-    color: #4B0082;
-}
-
-#clearMarkers {
-    background-color: #d32f2f;
-    color: white;
-    font-size: 14px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#clearMarkers:hover {
-    background-color: #b71c1c;
-}
-
+/* ========== FOOTER ADAPTATIVO ========== */
 footer {
-    background-color: #4B0082;
-    color: #FFFFFF;
-    padding: 15px 0;
-    text-align: center;
+    background: #4B0082;
+    color: white;
+    padding: 2rem 1rem;
+    margin-top: 3rem;
 }
 
 footer nav ul {
-    list-style: none;
     display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
     justify-content: center;
     padding: 0;
-    margin: 0;
-}
-
-footer nav ul li {
-    margin: 0 5px;
 }
 
 footer nav ul li a {
-    color: #FFFFFF;
-    text-decoration: none;
-    font-size: 14px;
+    color: #fff;
+    opacity: 0.9;
+    transition: opacity 0.3s;
 }
 
 footer nav ul li a:hover {
-    color: #8A2BE2;
+    opacity: 1;
+}
+
+/* ========== MEDIA QUERIES PARA TABLETS ========== */
+@media (min-width: 769px) {
+    #map {
+        height: 500px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+    }
+}
+
+/* ========== AJUSTES PARA PANTALLAS GRANDES ========== */
+@media (min-width: 1200px) {
+    body {
+        font-size: 18px;
+    }
+
+    header {
+        padding: 0 40px;
+    }
+
+    .menu {
+        gap: 40px;
+    }
 }
