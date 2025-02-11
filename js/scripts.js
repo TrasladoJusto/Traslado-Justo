@@ -1,172 +1,171 @@
-// ========== FUNCIONALIDAD ORIGINAL DEL MAPA Y FORMULARIO (INTACTA) ========== //
+// ========== CONTROL DEL MENÚ MÓVIL ========== //
+const menuToggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('.menu');
+const overlay = document.querySelector('.overlay');
+
+// Función para alternar menú
+function toggleMenu() {
+    menu.classList.toggle('active');
+    overlay.classList.toggle('active');
+    document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
+}
+
+// Event listeners
+menuToggle.addEventListener('click', toggleMenu);
+overlay.addEventListener('click', toggleMenu);
+
+// ========== FUNCIONALIDAD DEL MAPA ========== //
 let map;
 let routingControl;
 let markerOrigen = null;
 let markerDestino = null;
 
-// Inicializa el mapa centrado en Lima, Perú
+// Inicializar mapa
 function initMap() {
     map = L.map('map').setView([-12.046374, -77.042793], 13);
-
+    
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 }
 
-// Geocodifica una dirección a coordenadas
+// Geocodificar dirección
 async function geocodeAddress(address) {
-    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
     try {
-        const response = await fetch(url);
+        const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`);
         const data = await response.json();
-        if (data.length > 0) {
-            return [parseFloat(data[0].lat), parseFloat(data[0].lon)];
-        } else {
-            throw new Error(`No se encontró la dirección: "${address}"`);
-        }
+        
+        if (!data.length) throw new Error('Dirección no encontrada');
+        return [parseFloat(data[0].lat), parseFloat(data[0].lon)];
+        
     } catch (error) {
-        console.error(`Error al geocodificar: ${error.message}`);
+        alert(`Error: ${error.message}`);
         throw error;
     }
 }
 
-// Marca una ubicación en el mapa
+// Añadir marcador
 function addMarker(coordinates, isOrigin) {
     const icon = L.icon({
         iconUrl: isOrigin 
-            ? 'https://leafletjs.com/examples/custom-icons/leaf-green.png' 
+            ? 'https://leafletjs.com/examples/custom-icons/leaf-green.png'
             : 'https://leafletjs.com/examples/custom-icons/leaf-red.png',
-        iconSize: [25, 41],
+        iconSize: [32, 41]
     });
 
-    const marker = L.marker(L.latLng(coordinates[0], coordinates[1]), { icon }).addTo(map);
+    // Eliminar marcador existente
+    if (isOrigin && markerOrigen) map.removeLayer(markerOrigen);
+    if (!isOrigin && markerDestino) map.removeLayer(markerDestino);
 
-    if (isOrigin) {
-        if (markerOrigen) map.removeLayer(markerOrigen);
-        markerOrigen = marker;
-    } else {
-        if (markerDestino) map.removeLayer(markerDestino);
-        markerDestino = marker;
-    }
+    // Crear nuevo marcador
+    const marker = L.marker(coordinates, { icon }).addTo(map);
+    isOrigin ? markerOrigen = marker : markerDestino = marker;
 }
 
-// Calcula y muestra la ruta en el mapa
+// Calcular ruta
 async function calculateRoute() {
-    const originInput = document.getElementById('origen').value.trim();
-    const destinationInput = document.getElementById('destino').value.trim();
+    const origenInput = document.getElementById('origen').value.trim();
+    const destinoInput = document.getElementById('destino').value.trim();
 
-    if (!originInput || !destinationInput) {
-        alert('Por favor, ingrese tanto la dirección de origen como la de destino.');
+    if (!origenInput || !destinoInput) {
+        alert('Por favor ingrese ambas direcciones');
         return;
     }
 
     try {
-        const origin = await geocodeAddress(originInput);
-        const destination = await geocodeAddress(destinationInput);
+        const [origenCoords, destinoCoords] = await Promise.all([
+            geocodeAddress(origenInput),
+            geocodeAddress(destinoInput)
+        ]);
 
-        addMarker(origin, true);
-        addMarker(destination, false);
+        // Añadir marcadores
+        addMarker(origenCoords, true);
+        addMarker(destinoCoords, false);
 
+        // Eliminar ruta anterior
         if (routingControl) map.removeControl(routingControl);
 
+        // Crear nueva ruta
         routingControl = L.Routing.control({
-            waypoints: [L.latLng(origin[0], origin[1]), L.latLng(destination[0], destination[1])],
+            waypoints: [
+                L.latLng(origenCoords[0], origenCoords[1]),
+                L.latLng(destinoCoords[0], destinoCoords[1])
+            ],
             routeWhileDragging: true,
-            showAlternatives: false,
+            show: false
         }).addTo(map);
 
-        routingControl.on('routesfound', (e) => {
+        // Manejar resultados
+        routingControl.on('routesfound', e => {
             const route = e.routes[0];
-            const distance = (route.summary.totalDistance / 1000).toFixed(2) + ' km';
-            const duration = (route.summary.totalTime / 60).toFixed(0) + ' min';
-            const cost = (route.summary.totalDistance / 1000 * 2).toFixed(2);
+            const distancia = (route.summary.totalDistance / 1000).toFixed(2);
+            const tiempo = Math.round(route.summary.totalTime / 60);
+            const costo = (distancia * 2).toFixed(2);
 
-            document.getElementById('distancia-res').textContent = `Distancia: ${distance}`;
-            document.getElementById('costo-res').textContent = `Costo estimado: S/ ${cost}`;
-            document.getElementById('tiempo-res').textContent = `Duración estimada: ${duration}`;
+            document.getElementById('distancia-res').textContent = `Distancia: ${distancia} km`;
+            document.getElementById('tiempo-res').textContent = `Tiempo estimado: ${tiempo} min`;
+            document.getElementById('costo-res').textContent = `Costo estimado: S/ ${costo}`;
         });
 
-        routingControl.on('routingerror', (e) => {
-            console.error('Error de enrutamiento:', e);
-            alert('No se pudo calcular la ruta. Verifique las direcciones ingresadas.');
-        });
     } catch (error) {
-        alert(error.message);
+        console.error('Error al calcular ruta:', error);
     }
 }
 
-// Limpia marcadores, rutas y detalles
+// Limpiar selección
 function clearMarkers() {
-    if (markerOrigen) {
-        map.removeLayer(markerOrigen);
-        markerOrigen = null;
-    }
-    if (markerDestino) {
-        map.removeLayer(markerDestino);
-        markerDestino = null;
-    }
-    if (routingControl) {
-        map.removeControl(routingControl);
-        routingControl = null;
-    }
-
+    if (markerOrigen) map.removeLayer(markerOrigen);
+    if (markerDestino) map.removeLayer(markerDestino);
+    if (routingControl) map.removeControl(routingControl);
+    
+    markerOrigen = null;
+    markerDestino = null;
+    routingControl = null;
+    
     document.getElementById('origen').value = '';
     document.getElementById('destino').value = '';
-    document.getElementById('distancia-res').textContent = 'Distancia: -';
-    document.getElementById('costo-res').textContent = 'Costo: -';
-    document.getElementById('tiempo-res').textContent = 'Tiempo estimado: -';
+    document.querySelectorAll('#resultados p').forEach(p => p.textContent = '-');
 }
 
-// Envía los datos a WhatsApp
-function enviarWhatsApp(event) {
-    event.preventDefault();
+// Enviar a WhatsApp
+function enviarWhatsApp(e) {
+    e.preventDefault();
+    
+    // Obtener datos del formulario
+    const formData = new FormData(document.getElementById('contactForm'));
+    const datos = Object.fromEntries(formData.entries());
+    
+    // Construir mensaje
+    const mensaje = `*Solicitud de Traslado*
+    
+    *Nombre:* ${datos.nombre} ${datos.apellidos}
+    *Celular:* ${datos.celular}
+    *Correo:* ${datos.correo || 'No especificado'}
+    *Vehículo:* ${datos.vehiculo}
+    *Fecha:* ${datos.fecha}
+    *Hora:* ${datos.hora}
+    *Origen:* ${datos.origen}
+    *Destino:* ${datos.destino}
+    *Costo estimado:* ${document.getElementById('costo-res').textContent.split(': ')[1] || 'No calculado'}`;
 
-    const nombre = document.getElementById('nombre')?.value.trim() || 'No especificado';
-    const apellidos = document.getElementById('apellidos')?.value.trim() || '';
-    const celular = document.getElementById('celular')?.value.trim() || 'No especificado';
-    const correo = document.getElementById('correo')?.value.trim() || 'No especificado';
-    const origen = document.getElementById('origen')?.value.trim() || 'No especificado';
-    const destino = document.getElementById('destino')?.value.trim() || 'No especificado';
-    const vehiculo = document.getElementById('vehiculo')?.value.trim() || 'No especificado';
-    const fecha = document.getElementById('fecha')?.value.trim() || 'No especificada';
-    const hora = document.getElementById('hora')?.value.trim() || 'No especificada';
-
-    const costo = document.getElementById('costo-res')?.textContent.match(/Costo estimado: S\/ ([\d.]+)/)?.[1] || "0.00";
-
-    const mensaje = `
-        Solicito un servicio de Traslado Justo.
-        Nombre: ${nombre} ${apellidos}
-        Celular: ${celular}
-        Correo: ${correo}
-        Vehículo: ${vehiculo}
-        Fecha: ${fecha}
-        Hora: ${hora}
-        Origen: ${origen}
-        Destino: ${destino}
-        Costo estimado: S/ ${costo}
-    `.trim();
-
+    // Codificar y enviar
     const url = `https://wa.me/51968726558?text=${encodeURIComponent(mensaje)}`;
     window.open(url, '_blank');
 }
 
-// ========== (SOLO SE MODIFICÓ ESTA SECCIÓN) ========== //
-// Función para alternar menú - Versión original
-function toggleMenu() {
-    document.querySelector('.menu').classList.toggle('active');
-    document.querySelector('.overlay').classList.toggle('active');
-}
-
-// Event listeners originales
-document.querySelector('.overlay').addEventListener('click', toggleMenu);
-document.addEventListener("DOMContentLoaded", () => {
+// ========== INICIALIZACIÓN ========== //
+document.addEventListener('DOMContentLoaded', () => {
     initMap();
-
-    const calculateButton = document.getElementById("calculateRoute");
-    const clearButton = document.getElementById("clearMarkers");
-    const whatsappButton = document.getElementById("enviarWhatsApp");
-
-    if (calculateButton) calculateButton.addEventListener("click", calculateRoute);
-    if (clearButton) clearButton.addEventListener("click", clearMarkers);
-    if (whatsappButton) whatsappButton.addEventListener("click", enviarWhatsApp);
+    
+    // Event listeners
+    document.getElementById('calculateRoute').addEventListener('click', calculateRoute);
+    document.getElementById('clearMarkers').addEventListener('click', clearMarkers);
+    document.getElementById('contactForm').addEventListener('submit', enviarWhatsApp);
+    
+    // Cerrar menú al hacer clic en enlaces
+    document.querySelectorAll('.menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) toggleMenu();
+        });
+    });
 });
