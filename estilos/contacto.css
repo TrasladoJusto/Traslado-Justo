@@ -8,54 +8,57 @@ body {
     overflow-x: hidden;
 }
 
-/* ========== HEADER ========== */
+/* ========== HEADER PROFESIONAL ========== */
 header {
     background-color: #FFFFFF;
-    padding: 1px 0;
+    padding: 0 30px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 48px;
-    position: relative;
+    height: 60px;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
-    margin-left: 30px;
 }
 
 .logo {
     height: 30px;
+    width: auto;
     object-fit: contain;
 }
 
-/* ========== NAVEGACIÓN PRINCIPAL ========== */
+/* ========== NAVEGACIÓN PRINCIPAL CORREGIDA ========== */
 .menu {
     list-style: none;
     display: flex;
-    gap: 50px;
-    margin-left: 0;
-    margin-right: 35px;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
 }
 
 .menu li a {
     text-decoration: none;
     color: #6a0dad;
     font-size: 16px;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
 }
 
 .menu li a:hover {
     color: #4a148c;
+    background: rgba(106,13,154,0.05);
 }
 
 /* ========== SECCIÓN DE CONTACTO ========== */
 #contact {
     text-align: center;
-    padding: 20px;
+    padding: 40px 20px;
     background-color: #FFFFFF;
 }
 
@@ -68,100 +71,96 @@ header {
 #contact p {
     font-size: 1em;
     color: #555;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .contact-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-    max-width: 100%;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* ========== FORMULARIO ========== */
 form {
+    flex: 1;
     max-width: 600px;
-    margin: 10px auto;
-    padding: 15px;
+    padding: 25px;
     background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    color: #4B0082;
+    font-weight: 500;
 }
 
 input, select, button {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: #6a0dad;
+    outline: none;
 }
 
 button {
     background-color: #6a1b9a;
-    color: #fff;
+    color: white;
     border: none;
     cursor: pointer;
-    font-size: 14px;
-    padding: 10px;
-    transition: background-color 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-button:hover, button:focus {
+button:hover {
     background-color: #4a148c;
-    outline: none;
 }
 
 /* ========== MAPA ========== */
 #map {
     width: 100%;
     height: 400px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-@media (min-width: 769px) {
-    #map {
-        max-width: 80%;
-        height: 500px;
-        margin: 0 auto;
-    }
+    border: 2px solid #eee;
+    border-radius: 12px;
+    margin-top: 20px;
 }
 
 /* ========== RESULTADOS ========== */
 #resultados {
     background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid #eee;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 30px;
     text-align: center;
-    margin-top: 15px;
-    font-size: 1.1em;
 }
 
 #resultados p {
-    margin: 10px 0;
-    font-weight: bold;
+    margin: 15px 0;
+    font-weight: 600;
     color: #4B0082;
+    font-size: 1.1em;
 }
 
 #clearMarkers {
     background-color: #d32f2f;
-    color: white;
+    padding: 12px 25px;
     font-size: 14px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    border-radius: 8px;
 }
 
 #clearMarkers:hover {
@@ -172,7 +171,8 @@ button:hover, button:focus {
 footer {
     background-color: #4B0082;
     color: #FFFFFF;
-    padding: 15px 0;
+    padding: 30px 0;
+    margin-top: 50px;
     text-align: center;
 }
 
@@ -180,20 +180,18 @@ footer nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
+    gap: 25px;
     padding: 0;
-    margin: 0;
-}
-
-footer nav ul li {
-    margin: 0 5px;
+    margin: 20px 0;
 }
 
 footer nav ul li a {
     color: #FFFFFF;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 15px;
+    transition: opacity 0.3s ease;
 }
 
 footer nav ul li a:hover {
-    color: #8A2BE2;
+    opacity: 0.9;
 }
