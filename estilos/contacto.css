@@ -24,7 +24,7 @@ header {
 .logo-container {
     display: flex;
     align-items: center;
-    margin-left: 30px;
+    margin-left: 20px;
 }
 
 .logo {
@@ -36,9 +36,9 @@ header {
 .menu {
     list-style: none;
     display: flex;
-    gap: 50px;
+    gap: 45px;
     margin-left: 0;
-    margin-right: 35px;
+    margin-right: 40px;
     padding: 0;
 }
 
@@ -101,7 +101,7 @@ header {
         position: fixed;
         top: 48px !important;
         right: -100%;
-        width: 65%;
+        width: 60%;
         height: calc(100vh - 48px);
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
