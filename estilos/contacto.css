@@ -20,7 +20,6 @@ header {
     position: relative;
 }
 
-/* ========== CONTENEDOR PRINCIPAL ========== */
 header .container {
     display: flex;
     justify-content: space-between;
@@ -31,7 +30,6 @@ header .container {
     padding: 0 20px;
 }
 
-/* ========== LOGO ========== */
 .logo-container {
     display: flex;
     align-items: center;
@@ -43,7 +41,7 @@ header .container {
     object-fit: contain;
 }
 
-/* ========== MENÚ PRINCIPAL (VERSIÓN ORIGINAL) ========== */
+/* ========== NAVEGACIÓN PRINCIPAL ========== */
 .menu {
     list-style: none;
     display: flex;
@@ -65,7 +63,7 @@ header .container {
     color: #4a148c;
 }
 
-/* ========== MENÚ MÓVIL (SIN MODIFICACIONES) ========== */
+/* ========== MENÚ MÓVIL (VERSIÓN ORIGINAL COMPLETA) ========== */
 .menu-toggle {
     display: none;
     font-size: 24px;
@@ -77,72 +75,91 @@ header .container {
     z-index: 1001;
 }
 
-.overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    z-index: 999;
-}
-
 @media (max-width: 768px) {
-    .logo-container {
-        margin-left: 15px;
+    /* Botón Hamburguesa */
+    .menu-toggle {
+        display: block !important;
+        position: fixed;
+        top: 12px !important;
+        right: 15px !important;
+        z-index: 1003;
+        background: transparent !important;
+        color: #6a0dad !important;
+        font-size: 28px;
+        padding: 0;
+        margin: 0;
+        border: none !important;
+        cursor: pointer;
+        transition: transform 0.3s ease;
     }
 
+    /* Menú desplegable */
     .menu {
+        display: none;
         position: fixed;
-        top: 48px !important;
+        top: 0;
         right: -100%;
-        width: 60%;
-        height: calc(100vh - 48px);
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        flex-direction: column;
-        padding: 20px 15px;
-        margin: 0;
-        box-shadow: -2px 0 15px rgba(0, 0, 0, 0.05);
+        width: 75%;
+        max-width: 300px;
+        height: 100vh;
+        background: #fff;
+        box-shadow: -15px 0 25px rgba(0,0,0,0.1);
         z-index: 1000;
-        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        margin: 0;
+        padding: 70px 20px 20px;
     }
 
     .menu.active {
         right: 0;
-    }
-
-    .menu-toggle {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        right: 10px;
-        font-size: 28px;
+        flex-direction: column;
     }
 
     .menu li {
-        margin: 12px 0;
+        margin: 15px 0;
         text-align: right;
+        width: 100%;
     }
 
     .menu li a {
-        font-size: 16px;
-        padding: 12px 20px;
+        color: #6a0dad !important;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 12px 25px;
         display: block;
-        border-radius: 6px;
-        background: rgba(243, 233, 255, 0.3);
-        transition: all 0.2s ease;
+        transition: all 0.3s ease;
     }
 
     .menu li a:hover {
-        background: rgba(243, 233, 255, 0.5);
-        transform: translateX(-8px);
+        background: #f3e9ff;
+        transform: translateX(-10px);
+    }
+
+    /* Overlay funcional */
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        backdrop-filter: blur(8px);
+        z-index: 999;
+        opacity: 0;
+        transition: opacity 0.3s ease;
     }
 
     .overlay.active {
         display: block;
+        opacity: 1;
+    }
+
+    /* Efecto de desenfoque */
+    .overlay.active ~ *:not(header):not(nav):not(.menu) {
+        filter: blur(8px);
+        pointer-events: none;
     }
 }
 
