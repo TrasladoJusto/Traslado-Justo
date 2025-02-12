@@ -36,7 +36,7 @@ header {
 .menu {
     list-style: none;
     display: flex;
-    gap: 45px;
+    gap: 40px;
     margin-left: 0;
     margin-right: 40px;
     padding: 0;
