@@ -11,26 +11,31 @@ body {
 /* ========== HEADER ========== */
 header {
     background-color: #FFFFFF;
-    padding: 0 15px;
+    padding: 1px 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
     position: relative;
-    z-index: 1000;
 }
 
-/* ========== BARRA DE NAVEGACIÓN DESKTOP ========== */
+/* ========== CONTENEDOR PRINCIPAL ========== */
 header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    height: 50px;
+    padding: 0 20px;
 }
 
+/* ========== LOGO ========== */
 .logo-container {
     display: flex;
     align-items: center;
-    margin-left: 15px;
+    margin-left: 30px;
 }
 
 .logo {
@@ -38,11 +43,13 @@ header .container {
     object-fit: contain;
 }
 
+/* ========== MENÚ PRINCIPAL (VERSIÓN ORIGINAL) ========== */
 .menu {
     list-style: none;
     display: flex;
-    gap: 40px;
-    margin: 0 35px 0 0;
+    gap: 50px;
+    margin-left: 0;
+    margin-right: 35px;
     padding: 0;
 }
 
@@ -50,46 +57,24 @@ header .container {
     text-decoration: none;
     color: #6a0dad;
     font-size: 16px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    padding: 8px 15px;
-    border-radius: 6px;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
 .menu li a:hover {
     color: #4a148c;
-    background: rgba(106, 13, 173, 0.08);
 }
 
-.menu li a.active {
-    color: #8A2BE2;
-    background: rgba(138, 43, 226, 0.1);
-}
-
-/* ========== MENÚ MÓVIL (SIN MODIFICACIONES ORIGINALES) ========== */
+/* ========== MENÚ MÓVIL (SIN MODIFICACIONES) ========== */
 .menu-toggle {
     display: none;
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    transform: translateY(-50%);
-    background: transparent;
-    color: #6a0dad;
-    border: none;
-    padding: 0;
     font-size: 24px;
+    background: none;
+    border: none;
     cursor: pointer;
-    z-index: 1001;
-    width: 30px;
-    height: 30px;
-}
-
-.menu-toggle:hover,
-.menu-toggle:focus {
-    background: transparent !important;
-    color: #6a0dad !important;
-    transform: translateY(-50%);
+    color: #6a0dad;
     outline: none;
+    z-index: 1001;
 }
 
 .overlay {
@@ -161,7 +146,7 @@ header .container {
     }
 }
 
-/* ========== SECCIONES EXISTENTES (SIN CAMBIOS) ========== */
+/* ========== SECCIÓN DE CONTACTO ========== */
 #contact {
     text-align: center;
     padding: 20px;
@@ -188,6 +173,7 @@ header .container {
     max-width: 100%;
 }
 
+/* ========== FORMULARIO ========== */
 form {
     max-width: 600px;
     margin: 10px auto;
@@ -230,6 +216,7 @@ button:focus {
     outline: none;
 }
 
+/* ========== MAPA ========== */
 #map {
     width: 100%;
     height: 400px;
@@ -245,6 +232,7 @@ button:focus {
     }
 }
 
+/* ========== RESULTADOS ========== */
 #resultados {
     background: #fff;
     border: 1px solid #ddd;
@@ -277,6 +265,7 @@ button:focus {
     background-color: #b71c1c;
 }
 
+/* ========== FOOTER ========== */
 footer {
     background-color: #4B0082;
     color: #FFFFFF;
