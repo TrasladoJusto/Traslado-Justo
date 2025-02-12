@@ -3,19 +3,32 @@ const menuToggle = document.querySelector('.menu-toggle');
 const menu = document.querySelector('.menu');
 const overlay = document.querySelector('.overlay');
 
+// Función para alternar el menú
 function toggleMenu() {
     menu.classList.toggle('active');
     overlay.classList.toggle('active');
     document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
 }
 
+// Eventos del botón y overlay
 menuToggle.addEventListener('click', toggleMenu);
 overlay.addEventListener('click', toggleMenu);
 
+// Cerrar al hacer clic fuera del menú
 document.addEventListener('click', (e) => {
-    if (!menu.contains(e.target) && !menuToggle.contains(e.target) && menu.classList.contains('active')) {
+    const isMenuClick = menu.contains(e.target);
+    const isButtonClick = menuToggle.contains(e.target);
+    
+    if (!isMenuClick && !isButtonClick && menu.classList.contains('active')) {
         toggleMenu();
     }
+});
+
+// Cerrar menú al seleccionar opción
+document.querySelectorAll('.menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) toggleMenu();
+    });
 });
 
 // ========== FUNCIONALIDAD DEL MAPA ========== //
@@ -62,7 +75,7 @@ async function calculateRoute() {
     const origen = document.getElementById('origen').value.trim();
     const destino = document.getElementById('destino').value.trim();
     
-    if (!origen || !destino) return alert('Complete ambos campos');
+    if (!origen || !destino) return alert('Complete ambos campos de dirección');
     
     try {
         const [coordOrigen, coordDestino] = await Promise.all([
@@ -77,7 +90,8 @@ async function calculateRoute() {
         
         routingControl = L.Routing.control({
             waypoints: [L.latLng(coordOrigen), L.latLng(coordDestino)],
-            routeWhileDragging: true
+            routeWhileDragging: true,
+            showAlternatives: false
         }).addTo(map);
         
         routingControl.on('routesfound', (e) => {
@@ -88,7 +102,7 @@ async function calculateRoute() {
         });
         
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error en el cálculo de ruta:', error);
     }
 }
 
@@ -111,24 +125,32 @@ function clearMarkers() {
 function enviarWhatsApp(e) {
     e.preventDefault();
     const formData = new FormData(document.getElementById('contactForm'));
-    const mensaje = Array.from(formData.entries())
-        .map(([key, val]) => `${key}: ${val}`)
-        .concat(`Costo estimado: ${document.getElementById('costo-res').textContent.split(': ')[1] || '0.00'}`)
-        .join('%0A');
+    const datos = Object.fromEntries(formData.entries());
     
+    const mensaje = `*Nueva Reserva*%0A
+Nombre: ${datos.nombre} ${datos.apellidos}%0A
+Celular: ${datos.celular}%0A
+Correo: ${datos.correo || 'No especificado'}%0A
+Vehículo: ${datos.vehiculo}%0A
+Fecha: ${datos.fecha}%0A
+Hora: ${datos.hora}%0A
+Origen: ${datos.origen}%0A
+Destino: ${datos.destino}%0A
+${document.getElementById('costo-res').textContent}`;
+
     window.open(`https://wa.me/51968726558?text=${mensaje}`, '_blank');
 }
 
 // ========== INICIALIZACIÓN GENERAL ========== //
 document.addEventListener('DOMContentLoaded', () => {
     initMap();
+    
+    // Event listeners
     document.getElementById('calculateRoute').addEventListener('click', calculateRoute);
     document.getElementById('clearMarkers').addEventListener('click', clearMarkers);
     document.getElementById('contactForm').addEventListener('submit', enviarWhatsApp);
     
-    document.querySelectorAll('.menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) toggleMenu();
-        });
-    });
+    // Ajustar posición inicial del menú
+    const header = document.querySelector('header');
+    if(header) menu.style.top = `${header.offsetHeight}px`;
 });
