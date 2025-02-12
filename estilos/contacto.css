@@ -8,50 +8,69 @@ body {
     overflow-x: hidden;
 }
 
-/* ========== HEADER ========== */
+/* ========== HEADER AJUSTADO ========== */
 header {
     background-color: #FFFFFF;
-    padding: 0 15px;
+    padding: 0 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 48px;
     position: relative;
     z-index: 1000;
+}
+
+header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
-    margin-left: 30px;
+    margin-left: 20px;
 }
 
 .logo {
-    height: 30px;
+    height: 28px;
     object-fit: contain;
+    transition: transform 0.3s ease;
 }
 
-/* ========== NAVEGACIÓN PRINCIPAL (DESKTOP) ========== */
+/* ========== NAVEGACIÓN PRINCIPAL ========== */
 .menu {
     list-style: none;
     display: flex;
-    gap: 50px;
-    margin-left: 0;
-    margin-right: 35px;
+    gap: 18px;
+    margin-right: 40px;
     padding: 0;
 }
 
 .menu li a {
     text-decoration: none;
     color: #6a0dad;
-    font-size: 16px;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    font-size: 15px;
+    font-weight: 600;
+    position: relative;
+    transition: color 0.2s ease;
 }
 
-.menu li a:hover {
-    color: #4a148c;
+.menu li a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #4a148c;
+    transition: width 0.3s ease;
+}
+
+.menu li a:hover::after {
+    width: 100%;
 }
 
 /* ========== MENÚ MÓVIL ========== */
@@ -72,14 +91,6 @@ header {
     height: 30px;
 }
 
-.menu-toggle:hover,
-.menu-toggle:focus {
-    background: transparent !important;
-    color: #6a0dad !important;
-    transform: translateY(-50%);
-    outline: none;
-}
-
 .overlay {
     display: none;
     position: fixed;
@@ -87,28 +98,24 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
     z-index: 999;
 }
 
 @media (max-width: 768px) {
-    .logo-container {
-        margin-left: 15px;
-    }
-
     .menu {
         position: fixed;
-        top: 48px !important;
+        top: 45px;
         right: -100%;
         width: 65%;
-        height: calc(100vh - 48px);
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
+        height: calc(100vh - 45px);
+        background: rgba(255, 255, 255, 0.9) !important;
+        backdrop-filter: blur(12px);
         flex-direction: column;
         padding: 20px 15px;
         margin: 0;
-        box-shadow: -2px 0 15px rgba(0, 0, 0, 0.05);
+        box-shadow: -2px 0 8px rgba(0, 0, 0, 0.05);
         z-index: 1000;
         transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -121,8 +128,6 @@ header {
         display: flex;
         align-items: center;
         justify-content: center;
-        right: 10px;
-        font-size: 28px;
     }
 
     .menu li {
@@ -131,21 +136,32 @@ header {
     }
 
     .menu li a {
-        font-size: 16px;
-        padding: 12px 20px;
-        display: block;
-        border-radius: 6px;
-        background: rgba(243, 233, 255, 0.3);
-        transition: all 0.2s ease;
-    }
-
-    .menu li a:hover {
-        background: rgba(243, 233, 255, 0.5);
-        transform: translateX(-8px);
+        font-size: 15px;
+        padding: 12px 18px;
+        background: rgba(106, 13, 173, 0.08) !important;
+        border: 1px solid rgba(106, 13, 173, 0.1);
     }
 
     .overlay.active {
         display: block;
+    }
+}
+
+/* ========== FORMULARIO AMPLIADO ========== */
+form {
+    max-width: 600px;
+    margin: 10px auto;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 1024px) {
+    form {
+        max-width: 700px;
+        padding: 20px 35px;
     }
 }
 
@@ -174,46 +190,6 @@ header {
     justify-content: space-between;
     gap: 20px;
     max-width: 100%;
-}
-
-/* ========== FORMULARIO ========== */
-form {
-    max-width: 600px;
-    margin: 10px auto;
-    padding: 15px;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-}
-
-input, select, button {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-button {
-    background-color: #6a1b9a;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    padding: 10px;
-    transition: background-color 0.3s ease;
-}
-
-button:hover, button:focus {
-    background-color: #4a148c;
-    outline: none;
 }
 
 /* ========== MAPA ========== */
@@ -295,11 +271,12 @@ footer nav ul li a:hover {
     color: #8A2BE2;
 }
 
-/* ========== MEDIA QUERIES PARA DESKTOP ========== */
+/* ========== MEDIA QUERIES ========== */
 @media (min-width: 769px) {
     .menu-toggle {
         display: none !important;
     }
+}
     
     .menu {
         display: flex !important;
