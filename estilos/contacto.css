@@ -20,6 +20,7 @@ header {
     position: relative;
 }
 
+/* ========== CONTENEDOR PRINCIPAL ========== */
 header .container {
     display: flex;
     justify-content: space-between;
@@ -30,6 +31,7 @@ header .container {
     padding: 0 20px;
 }
 
+/* ========== LOGO ========== */
 .logo-container {
     display: flex;
     align-items: center;
@@ -41,7 +43,7 @@ header .container {
     object-fit: contain;
 }
 
-/* ========== NAVEGACIÓN PRINCIPAL ========== */
+/* ========== NAVEGACIÓN PRINCIPAL (DESKTOP) ========== */
 .menu {
     list-style: none;
     display: flex;
@@ -63,37 +65,28 @@ header .container {
     color: #4a148c;
 }
 
-/* ========== MENÚ MÓVIL (VERSIÓN ORIGINAL COMPLETA) ========== */
+/* ========== MENÚ MÓVIL (VERSIÓN ORIGINAL) ========== */
 .menu-toggle {
     display: none;
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
+    position: fixed;
+    top: 12px;
+    right: 15px;
+    z-index: 1003;
+    background: transparent;
     color: #6a0dad;
-    outline: none;
-    z-index: 1001;
+    border: none;
+    font-size: 28px;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.menu-toggle.active {
+    transform: rotate(90deg);
 }
 
 @media (max-width: 768px) {
-    /* Botón Hamburguesa */
-    .menu-toggle {
-        display: block !important;
-        position: fixed;
-        top: 12px !important;
-        right: 15px !important;
-        z-index: 1003;
-        background: transparent !important;
-        color: #6a0dad !important;
-        font-size: 28px;
-        padding: 0;
-        margin: 0;
-        border: none !important;
-        cursor: pointer;
-        transition: transform 0.3s ease;
-    }
-
-    /* Menú desplegable */
     .menu {
         display: none;
         position: fixed;
@@ -116,6 +109,10 @@ header .container {
         flex-direction: column;
     }
 
+    .menu-toggle {
+        display: block;
+    }
+
     .menu li {
         margin: 15px 0;
         text-align: right;
@@ -136,7 +133,6 @@ header .container {
         transform: translateX(-10px);
     }
 
-    /* Overlay funcional */
     .overlay {
         display: none;
         position: fixed;
@@ -156,14 +152,13 @@ header .container {
         opacity: 1;
     }
 
-    /* Efecto de desenfoque */
     .overlay.active ~ *:not(header):not(nav):not(.menu) {
         filter: blur(8px);
         pointer-events: none;
     }
 }
 
-/* ========== SECCIÓN DE CONTACTO ========== */
+/* ========== SECCIONES EXISTENTES (SIN CAMBIOS) ========== */
 #contact {
     text-align: center;
     padding: 20px;
@@ -190,7 +185,6 @@ header .container {
     max-width: 100%;
 }
 
-/* ========== FORMULARIO ========== */
 form {
     max-width: 600px;
     margin: 10px auto;
@@ -233,7 +227,6 @@ button:focus {
     outline: none;
 }
 
-/* ========== MAPA ========== */
 #map {
     width: 100%;
     height: 400px;
@@ -249,7 +242,6 @@ button:focus {
     }
 }
 
-/* ========== RESULTADOS ========== */
 #resultados {
     background: #fff;
     border: 1px solid #ddd;
@@ -282,7 +274,6 @@ button:focus {
     background-color: #b71c1c;
 }
 
-/* ========== FOOTER ========== */
 footer {
     background-color: #4B0082;
     color: #FFFFFF;
@@ -320,11 +311,5 @@ footer nav ul li a:hover {
     
     .menu {
         display: flex !important;
-        position: static !important;
-        width: auto !important;
-        height: auto !important;
-        background: transparent !important;
-        flex-direction: row !important;
-        padding: 0 !important;
     }
 }
