@@ -1,17 +1,23 @@
-/* General */
+/* ========== ESTILOS GENERALES ========== */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #F4F4F4;
     color: #333;
+    overflow-x: hidden;
+    width: 100vw;
 }
 
-/* Header */
+/* ========== HEADER PRINCIPAL ========== */
 header {
-    background-color: #4B0082;
-    color: #FFFFFF;
-    padding: 20px 0;
+    background-color: #FFFFFF;
+    padding: 10px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
 header .container {
@@ -23,49 +29,57 @@ header .container {
     padding: 0 20px;
 }
 
-header h1 {
-    font-size: 1.8em;
-    margin: 0;
+.logo-container {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
 }
 
-header nav ul {
+.logo {
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* ========== NAVEGACIÓN DESKTOP ========== */
+.menu {
     list-style: none;
     display: flex;
+    gap: 40px;
     margin: 0;
     padding: 0;
 }
 
-header nav ul li {
-    margin: 0 15px;
-}
-
-header nav ul li a {
+.menu li a {
     text-decoration: none;
-    color: #FFFFFF;
-    font-weight: bold;
-    transition: color 0.3s;
+    color: #6a0dad;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 8px;
 }
 
-header nav ul li a.active {
-    color: #8A2BE2;
+.menu li a:hover {
+    color: #4a148c;
+    background: rgba(106, 13, 173, 0.1);
 }
 
-header nav ul li a:hover {
-    color: #8A2BE2;
-}
-
-/* ========== MENÚ MÓVIL ========== */
+/* ========== MENÚ MÓVIL MEJORADO ========== */
 .menu-toggle {
     display: none;
     position: fixed;
     top: 15px;
     right: 15px;
+    z-index: 1001;
     background: transparent;
     color: #6a0dad;
     border: none;
     font-size: 28px;
-    z-index: 1001;
     cursor: pointer;
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
 }
 
 .overlay {
@@ -81,27 +95,25 @@ header nav ul li a:hover {
 }
 
 @media (max-width: 768px) {
-    /* ===== HEADER MÓVIL ===== */
-    header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-        padding: 10px 0;
+    /* ===== HEADER RESPONSIVE ===== */
+    header .container {
+        padding: 0 15px;
     }
 
-    /* ===== MENÚ MÓVIL ===== */
+    /* ===== MENÚ MÓVIL FULLSCREEN ===== */
     .menu {
         position: fixed;
-        top: 50px;
+        top: 0;
         right: -100vw;
         width: 100vw;
-        height: calc(100vh - 50px);
-        background: #fff;
+        height: 100vh;
+        background: #FFFFFF;
         flex-direction: column;
-        padding: 20px;
-        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 80px 25px;
+        margin: 0;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 1000;
+        box-shadow: none;
     }
 
     .menu.active {
@@ -109,40 +121,38 @@ header nav ul li a:hover {
     }
 
     .menu li {
-        margin: 15px 0;
+        margin: 20px 0;
+        text-align: right;
         width: 100%;
-        text-align: center;
+        border-bottom: 1px solid rgba(106, 13, 173, 0.1);
     }
 
     .menu li a {
-        padding: 15px 0 !important;
+        color: #4B0082 !important;
+        font-size: 1.2em;
+        padding: 15px 25px !important;
         display: block;
         width: 100%;
-        color: #6a0dad;
+        transition: all 0.3s ease;
+    }
+
+    .menu li a:hover {
+        background: rgba(106, 13, 173, 0.05);
+        transform: translateX(-10px);
+    }
+
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .overlay.active {
         display: block;
     }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    /* ===== AJUSTES HERO ===== */
-    .hero {
-        margin-top: 50px;
-        height: calc(100vh - 50px);
-        padding: 0 15px;
-        justify-content: center;
-    }
-
-    .hero-content {
-        max-width: 100%;
-    }
 }
 
-/* Fondo del héroe */
+/* ========== HERO SECTION ========== */
 .hero {
     position: relative;
     width: 100%;
@@ -150,93 +160,93 @@ header nav ul li a:hover {
     background: url('img/mi-auto.png') no-repeat center center/cover;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
+    margin-top: 80px;
 }
 
-/* Cuadro semiopaco */
 .hero-content {
-    background-color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.95);
     padding: 30px;
-    border-radius: 10px;
-    max-width: 500px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    max-width: 600px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    margin: 0 15px;
 }
 
-/* Texto destacado */
 .highlight {
-    font-size: 1.2em;
-    font-weight: bold;
+    font-size: 1.4em;
     color: #4B0082;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-weight: 700;
 }
 
-/* Título principal */
 .hero-title {
     font-size: 2.5em;
-    font-weight: bold;
     color: #4B0082;
-    line-height: 1.2;
-    margin-bottom: 20px;
+    line-height: 1.3;
+    margin-bottom: 25px;
 }
 
-/* Subtítulo */
 .hero-subtitle {
-    font-size: 1em;
-    color: #333;
-    line-height: 1.5;
-    margin-bottom: 20px;
+    font-size: 1.1em;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 30px;
 }
 
-/* Botón de llamada a la acción */
+/* ========== BOTÓN CTA ========== */
 .cta-button {
-    display: inline-block;
-    background-color: #4B0082;
-    color: #FFFFFF;
-    padding: 10px 20px;
+    background: #4B0082;
+    color: white;
+    padding: 12px 35px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
     text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    display: inline-block;
 }
 
 .cta-button:hover {
-    background-color: #8A2BE2;
+    background: #6a0dad;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(75, 0, 130, 0.3);
 }
 
-/* Features Section */
+/* ========== FEATURES SECTION ========== */
 #features {
-    padding: 50px 20px;
+    padding: 80px 20px;
     background-color: #EFEFEF;
     text-align: center;
-    color: #333;
 }
 
 #features h2 {
     font-size: 2em;
-    margin-bottom: 30px;
     color: #4B0082;
+    margin-bottom: 30px;
 }
 
 .features-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .feature {
-    background-color: #FFFFFF;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    width: 300px;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 320px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .feature:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .feature img {
@@ -247,6 +257,7 @@ header nav ul li a:hover {
 .feature h3 {
     font-size: 1.2em;
     margin-bottom: 10px;
+    color: #4B0082;
 }
 
 .feature p {
@@ -255,12 +266,12 @@ header nav ul li a:hover {
     color: #666;
 }
 
-/* Testimonials Section */
+/* ========== TESTIMONIALS SECTION ========== */
 #testimonials {
-    padding: 50px 20px;
+    padding: 80px 20px;
     background-color: #4B0082;
     text-align: center;
-    color: #FFFFFF;
+    color: white;
 }
 
 #testimonials h2 {
@@ -272,23 +283,25 @@ header nav ul li a:hover {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .testimonial {
-    background-color: #FFFFFF;
+    background: white;
     color: #333;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    width: 300px;
+    padding: 25px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 320px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .testimonial:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .testimonial p {
@@ -303,11 +316,11 @@ header nav ul li a:hover {
     color: #4B0082;
 }
 
-/* Footer */
+/* ========== FOOTER ========== */
 footer {
     background-color: #4B0082;
     color: #FFFFFF;
-    padding: 20px 0;
+    padding: 40px 20px;
     text-align: center;
 }
 
@@ -315,12 +328,10 @@ footer nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
     padding: 0;
-    margin: 0;
-}
-
-footer nav ul li {
-    margin: 0 10px;
+    margin: 20px 0;
 }
 
 footer nav ul li a {
@@ -333,64 +344,36 @@ footer nav ul li a:hover {
     color: #8A2BE2;
 }
 
-/* Header general */
-header {
-    background-color: #FFFFFF;
-    padding: 10px 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+/* ========== MEDIA QUERIES ========== */
+@media (max-width: 768px) {
+    /* Ajustes móviles generales */
+    .hero {
+        margin-top: 70px;
+        height: calc(100vh - 70px);
+        padding: 0 15px;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .feature, .testimonial {
+        width: 100%;
+    }
 }
 
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Barra de navegación */
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 50px;
-    background-color: #fff;
-    padding: 0 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
-
-/* Logo */
-.logo-container {
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-}
-
-.logo {
-    height: 30px;
-    width: auto;
-    object-fit: contain;
-}
-
-/* Menú de navegación */
-.menu {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.menu li a {
-    text-decoration: none;
-    color: #6a0dad;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-/* Desktop */
 @media (min-width: 769px) {
     .menu-toggle {
         display: none !important;
+    }
+    
+    .menu {
+        display: flex !important;
+    }
+    
+    #features, #testimonials {
+        padding: 100px 20px;
     }
 }
