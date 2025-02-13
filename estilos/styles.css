@@ -54,6 +54,94 @@ header nav ul li a:hover {
     color: #8A2BE2;
 }
 
+/* ========== MENÚ MÓVIL ========== */
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    color: #6a0dad;
+    border: none;
+    font-size: 28px;
+    z-index: 1001;
+    cursor: pointer;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    z-index: 999;
+}
+
+@media (max-width: 768px) {
+    /* ===== HEADER MÓVIL ===== */
+    header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 10px 0;
+    }
+
+    /* ===== MENÚ MÓVIL ===== */
+    .menu {
+        position: fixed;
+        top: 50px;
+        right: -100vw;
+        width: 100vw;
+        height: calc(100vh - 50px);
+        background: #fff;
+        flex-direction: column;
+        padding: 20px;
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+    }
+
+    .menu.active {
+        right: 0;
+    }
+
+    .menu li {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .menu li a {
+        padding: 15px 0 !important;
+        display: block;
+        width: 100%;
+        color: #6a0dad;
+    }
+
+    .overlay.active {
+        display: block;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    /* ===== AJUSTES HERO ===== */
+    .hero {
+        margin-top: 50px;
+        height: calc(100vh - 50px);
+        padding: 0 15px;
+        justify-content: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+}
+
 /* Fondo del héroe */
 .hero {
     position: relative;
@@ -113,83 +201,6 @@ header nav ul li a:hover {
 
 .cta-button:hover {
     background-color: #8A2BE2;
-}
-
-/* Responsive: Modo móvil */
-@media (max-width: 768px) {
-    body {
-        overflow-x: hidden;
-        width: 100vw;
-    }
-
-    header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        padding: 10px 0;
-        z-index: 1000;
-    }
-
-    .hero {
-        margin-top: 60px;
-        height: calc(100vh - 60px);
-        padding: 0 15px;
-        justify-content: center;
-    }
-
-    .hero-content {
-        max-width: 100%;
-    }
-
-    /* Menú móvil full-width */
-    .menu {
-        display: none;
-        position: fixed;
-        top: 60px;
-        right: -100vw;
-        width: 100vw;
-        height: calc(100vh - 60px);
-        background: #fff;
-        flex-direction: column;
-        padding: 20px;
-        transition: right 0.3s ease;
-        z-index: 999;
-        box-shadow: none;
-    }
-
-    .menu.active {
-        right: 0;
-        display: flex;
-    }
-
-    .menu li {
-        margin: 15px 0;
-        width: 100%;
-        text-align: center;
-    }
-
-    .menu li a {
-        padding: 15px 0 !important;
-        display: block;
-        width: 100%;
-    }
-
-    .menu-toggle {
-        display: block;
-        position: fixed;
-        right: 15px;
-        top: 15px;
-        font-size: 24px;
-        background: none;
-        border: none;
-        color: #6a0dad;
-        z-index: 1001;
-    }
-
-    .overlay {
-        width: 100vw;
-        left: 0;
-    }
 }
 
 /* Features Section */
