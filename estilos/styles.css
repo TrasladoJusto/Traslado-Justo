@@ -115,7 +115,7 @@ header nav ul li a:hover {
     background-color: #8A2BE2;
 }
 
-/* Responsive: Modo móvil 100% ancho */
+/* Responsive: Modo móvil (solo ajustes de tamaño) */
 @media (max-width: 768px) {
     body {
         width: 100vw;
@@ -133,8 +133,7 @@ header nav ul li a:hover {
 
     .hero {
         width: 100vw;
-        padding-left: 15px;
-        padding-right: 15px;
+        padding: 0 15px;
     }
 
     .hero-content {
@@ -143,8 +142,7 @@ header nav ul li a:hover {
 
     #features, #testimonials, footer {
         width: 100vw;
-        margin-left: 0;
-        margin-right: 0;
+        margin: 0;
     }
 }
 
