@@ -1,10 +1,22 @@
 /* General */
+html {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #F4F4F4;
     color: #333;
+    width: 100vw;
+    overflow-x: hidden;
 }
 
 /* Header */
@@ -115,16 +127,28 @@ header nav ul li a:hover {
     background-color: #8A2BE2;
 }
 
-/* ========== VERSIÓN MÓVIL (100% ANCHO) ========== */
+/* Responsive: centrar contenido en pantallas pequeñas */
 @media (max-width: 768px) {
-    /* Ajustes generales */
-    header .container,
-    .hero-content {
-        padding-left: 15px;
-        padding-right: 15px;
+    body {
+        width: 100%;
+        min-width: 100%;
+    }
+    
+    .hero {
+        padding-left: 20px;
+        justify-content: center;
+        width: 100vw;
+        padding-left: 0;
+        padding-right: 0;
     }
 
-    /* Menú desplegable */
+    .hero-content {
+        max-width: 90%;
+        width: calc(100% - 30px);
+        margin: 0 15px;
+    }
+
+    /* Menú desplegable móvil */
     .menu {
         display: none;
         flex-direction: column;
@@ -132,13 +156,11 @@ header nav ul li a:hover {
         top: 0;
         right: -100%;
         width: 100%;
-        height: 100vh;
-        background: #fff;
-        z-index: 1000;
-        transition: right 0.3s ease;
-        padding: 80px 15px 15px;
-        margin: 0;
+        height: 100%;
+        background-color: #fff;
         box-shadow: none;
+        z-index: 10;
+        transition: right 0.3s ease;
     }
 
     .menu.active {
@@ -146,57 +168,39 @@ header nav ul li a:hover {
     }
 
     .menu li {
-        margin: 10px 0;
-        width: 100%;
+        margin: 15px 0;
     }
 
-    .menu li a {
-        display: block;
-        width: 100%;
-        padding: 15px;
-        box-sizing: border-box;
-    }
-
-    /* Botón hamburguesa */
     .menu-toggle {
         display: block;
-        position: fixed;
-        top: 15px;
-        right: 15px;
-        z-index: 1001;
-        font-size: 28px;
-        color: #6a0dad;
-        background: transparent;
+        font-size: 24px;
+        background: none;
         border: none;
+        cursor: pointer;
+        color: #6a0dad;
     }
 
-    /* Overlay */
+    /* Fondo desenfocado */
     .overlay {
         display: none;
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
+        width: 100vw;
         height: 100%;
-        background: rgba(0,0,0,0.5);
+        background-color: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(5px);
-        z-index: 999;
+        z-index: 5;
     }
 
     .overlay.active {
         display: block;
     }
 
-    /* Ajustes hero */
-    .hero {
-        padding-left: 15px;
-        padding-right: 15px;
-        justify-content: center;
-    }
-
-    .hero-content {
-        max-width: 100%;
-        padding: 20px;
+    /* Ajustes de contenedores */
+    header .container {
+        width: 100%;
+        padding: 0 15px;
     }
 }
 
@@ -330,7 +334,7 @@ footer nav ul li a:hover {
     color: #8A2BE2;
 }
 
-/* Header alternativo */
+/* General del header */
 header {
     background-color: #FFFFFF;
     padding: 10px 0;
@@ -373,4 +377,52 @@ header .container {
 
 .menu-toggle {
     display: none;
+}
+
+/* Estilo del menú desplegable en modo móvil */
+@media (max-width: 768px) {
+    header {
+        width: 95%;
+        margin: 0;
+    }
+
+    header .container {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+
+    .hero {
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        right: 20px;
+        background-color: #fff;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .menu li {
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #6a0dad;
+    }
 }
