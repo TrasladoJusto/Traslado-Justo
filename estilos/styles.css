@@ -58,7 +58,7 @@ header {
     color: #4a148c;
 }
 
-/* ===================== MENÚ MÓVIL ===================== */
+/* ===================== MENÚ MÓVIL TRANSPARENTE ===================== */
 .menu-toggle {
     display: none;
     position: absolute;
@@ -100,14 +100,12 @@ header {
         width: 70%;
         max-width: 300px;
         height: calc(100vh - 48px);
-        background: rgba(255, 255, 255, 0.95) !important;
-        box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
+        background: transparent !important;
         flex-direction: column;
         padding: 20px 0;
         margin: 0;
         z-index: 1000;
         transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        overflow: hidden;
     }
 
     .menu.active {
@@ -123,7 +121,7 @@ header {
     }
 
     .menu li {
-        margin: 8px 0;
+        margin: 12px 0;
     }
 
     .menu li a {
@@ -132,13 +130,14 @@ header {
         padding: 12px 15px;
         display: block;
         text-align: left;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 5px;
+        color: #6a0dad;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         transition: all 0.2s ease;
     }
 
     .menu li a:hover {
         transform: translateX(8px);
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
 
     .overlay.active {
