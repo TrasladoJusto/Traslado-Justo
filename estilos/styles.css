@@ -116,6 +116,78 @@ header nav ul li a:hover {
     background-color: #8A2BE2;
 }
 
+/* Responsive: centrar contenido en pantallas pequeñas */
+@media (max-width: 768px) {
+    /* Ajustes de ancho completo */
+    body {
+        width: 100vw;
+        overflow-x: hidden;
+    }
+    
+    .hero {
+        padding: 0 15px;
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* Menú desplegable móvil (estilos originales) */
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100%;
+        background-color: #fff;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        transition: right 0.3s ease;
+    }
+
+    .menu.active {
+        right: 0;
+    }
+
+    .menu li {
+        margin: 15px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #6a0dad;
+    }
+
+    /* Fondo desenfocado */
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        z-index: 5;
+    }
+
+    .overlay.active {
+        display: block;
+    }
+}
+
 /* Features Section */
 #features {
     padding: 50px 20px;
@@ -306,42 +378,22 @@ header {
     display: none;
 }
 
-/* Modo móvil */
+/* Ajustes finales para móvil */
 @media (max-width: 768px) {
-    /* Ajustes de ancho completo */
-    body {
-        width: 100vw;
-        overflow-x: hidden;
-    }
-    
-    .hero {
-        padding: 0 15px;
-        width: 100%;
-        box-sizing: border-box;
-        justify-content: center;
-    }
-
-    .hero-content {
-        max-width: 100%;
-        width: 100%;
-        margin: 0 auto;
-        padding: 20px;
-    }
-
     .features-container,
     .testimonials-container {
         width: 100%;
         padding: 0 15px;
         box-sizing: border-box;
     }
-
+    
     .feature,
     .testimonial {
         width: 100%;
         max-width: 100%;
     }
-
-    /* Estilos originales de navegación móvil */
+    
+    /* Mantener estilos originales de navegación */
     header {
         width: 95%;
         margin: 0;
@@ -370,31 +422,5 @@ header {
 
     .menu li {
         margin: 10px 0;
-    }
-
-    .menu-toggle {
-        display: block;
-        font-size: 24px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: #6a0dad;
-    }
-
-    /* Overlay original */
-    .overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(5px);
-        z-index: 5;
-    }
-
-    .overlay.active {
-        display: block;
     }
 }
