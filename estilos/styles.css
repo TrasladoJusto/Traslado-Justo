@@ -115,59 +115,30 @@ header nav ul li a:hover {
     background-color: #8A2BE2;
 }
 
-/* Responsive: Modo móvil 100% ancho */
+/* ========== VERSIÓN MÓVIL (100% ANCHO) ========== */
 @media (max-width: 768px) {
-    /* ========== AJUSTES DE ANCHO ========== */
-    body {
-        width: 100vw;
-        overflow-x: hidden;
-    }
-    
-    header {
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-    
-    header .container {
-        max-width: 100% !important;
-        padding: 0 15px !important;
-    }
-    
-    .hero {
-        width: 100vw;
-        padding: 0 15px !important;
-    }
-    
+    /* Ajustes generales */
+    header .container,
     .hero-content {
-        max-width: 100% !important;
-    }
-    
-    #features, #testimonials, footer {
-        width: 100vw;
-        margin: 0;
-        padding: 50px 15px;
-        box-sizing: border-box;
-    }
-    /* ========== FIN AJUSTES ========== */
-
-    /* Mantenemos tu configuración original del menú */
-    .hero {
-        justify-content: center;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
+    /* Menú desplegable */
     .menu {
         display: none;
         flex-direction: column;
         position: fixed;
         top: 0;
         right: -100%;
-        width: 250px;
-        height: 100%;
-        background-color: #fff;
-        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-        z-index: 10;
+        width: 100%;
+        height: 100vh;
+        background: #fff;
+        z-index: 1000;
         transition: right 0.3s ease;
+        padding: 80px 15px 15px;
+        margin: 0;
+        box-shadow: none;
     }
 
     .menu.active {
@@ -175,18 +146,31 @@ header nav ul li a:hover {
     }
 
     .menu li {
-        margin: 15px 0;
+        margin: 10px 0;
+        width: 100%;
     }
 
+    .menu li a {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    /* Botón hamburguesa */
     .menu-toggle {
         display: block;
-        font-size: 24px;
-        background: none;
-        border: none;
-        cursor: pointer;
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        z-index: 1001;
+        font-size: 28px;
         color: #6a0dad;
+        background: transparent;
+        border: none;
     }
 
+    /* Overlay */
     .overlay {
         display: none;
         position: fixed;
@@ -194,13 +178,25 @@ header nav ul li a:hover {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
+        background: rgba(0,0,0,0.5);
         backdrop-filter: blur(5px);
-        z-index: 5;
+        z-index: 999;
     }
 
     .overlay.active {
         display: block;
+    }
+
+    /* Ajustes hero */
+    .hero {
+        padding-left: 15px;
+        padding-right: 15px;
+        justify-content: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        padding: 20px;
     }
 }
 
@@ -334,7 +330,7 @@ footer nav ul li a:hover {
     color: #8A2BE2;
 }
 
-/* General del header */
+/* Header alternativo */
 header {
     background-color: #FFFFFF;
     padding: 10px 0;
@@ -350,19 +346,6 @@ header .container {
     padding: 0 20px;
 }
 
-/* Barra de navegación */
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 50px;
-    background-color: #fff;
-    padding: 0 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
-
-/* Logo */
 .logo-container {
     display: flex;
     align-items: center;
@@ -375,7 +358,6 @@ header {
     object-fit: contain;
 }
 
-/* Menú de navegación */
 .menu {
     list-style: none;
     display: flex;
@@ -389,55 +371,6 @@ header {
     font-weight: bold;
 }
 
-/* Botón del menú (desplegable) */
 .menu-toggle {
     display: none;
-}
-
-/* Estilo del menú desplegable en modo móvil */
-@media (max-width: 768px) {
-    header {
-        width: 100%;
-        margin: 0;
-    }
-
-    header .container {
-        max-width: 100%;
-        padding: 0 15px;
-    }
-
-    .hero {
-        background-size: cover;
-        background-position: center;
-        overflow: hidden;
-    }
-
-    .menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 50px;
-        right: 20px;
-        background-color: #fff;
-        padding: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        z-index: 10;
-    }
-
-    .menu.active {
-        display: flex;
-    }
-
-    .menu li {
-        margin: 10px 0;
-    }
-
-    .menu-toggle {
-        display: block;
-        font-size: 24px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: #6a0dad;
-    }
 }
