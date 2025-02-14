@@ -115,25 +115,22 @@ header nav ul li a:hover {
     background-color: #8A2BE2;
 }
 
-/* Responsive: Modo móvil (solo ajustes de tamaño) */
+/* Responsive: Modo móvil (solo ajuste de tamaño) */
 @media (max-width: 768px) {
     body {
         width: 100vw;
         overflow-x: hidden;
     }
-    
-    .menu {
-        width: 100vw !important;
-        right: -100vw !important;
-    }
 
-    .menu.active {
-        right: 0 !important;
+    .menu {
+        width: 100% !important; /* Único cambio en el menú */
+        right: -100% !important;
     }
 
     .hero {
         width: 100vw;
-        padding: 0 15px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     .hero-content {
@@ -142,7 +139,6 @@ header nav ul li a:hover {
 
     #features, #testimonials, footer {
         width: 100vw;
-        margin: 0;
     }
 }
 
