@@ -5,7 +5,7 @@ body {
     padding: 0;
     background-color: #F4F4F4;
     color: #333;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Prevenir scroll horizontal */
 }
 
 /* Header */
@@ -118,7 +118,7 @@ header nav ul li a:hover {
 
 /* Responsive: centrar contenido en pantallas pequeñas */
 @media (max-width: 768px) {
-    /* Ajustes de ancho completo */
+    /* Ajuste de ancho completo */
     body {
         width: 100vw;
         overflow-x: hidden;
@@ -138,7 +138,7 @@ header nav ul li a:hover {
         padding: 20px;
     }
 
-    /* Menú desplegable móvil (estilos originales) */
+    /* Menú desplegable móvil (original sin cambios) */
     .menu {
         display: none;
         flex-direction: column;
@@ -378,8 +378,9 @@ header {
     display: none;
 }
 
-/* Ajustes finales para móvil */
+/* Estilo del menú desplegable en modo móvil */
 @media (max-width: 768px) {
+    /* Ajuste final de contenedores */
     .features-container,
     .testimonials-container {
         width: 100%;
@@ -392,8 +393,8 @@ header {
         width: 100%;
         max-width: 100%;
     }
-    
-    /* Mantener estilos originales de navegación */
+
+    /* Estilos originales de navegación móvil */
     header {
         width: 95%;
         margin: 0;
