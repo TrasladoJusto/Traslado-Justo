@@ -12,19 +12,32 @@
     <link rel="manifest" href="estilos/img/site.webmanifest" />
     <title>Inicio - Traslado Justo</title>
     <link rel="stylesheet" href="estilos/styles.css">
+    <style>
+        /* Estilos adicionales para el logo-botón */
+        .logo-link {
+            display: block;
+            text-decoration: none;
+            border: none;
+            outline: none;
+        }
+        .logo-link:focus {
+            outline: none;
+        }
+    </style>
 </head>
 <body>
     <!-- Header Actualizado -->
     <header>
         <div class="logo-container">
-            <img src="estilos/img/logo.png" alt="Logo de Traslado Justo" class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="estilos/img/logo.png" alt="Logo de Traslado Justo" class="logo">
+            </a>
         </div>
         
         <!-- Nav Reestructurado -->
         <nav>
             <button class="menu-toggle" aria-label="Menú móvil" onclick="toggleMenu()">☰</button>
             <ul class="menu">
-                <li><a href="inicio.html" class="active">Inicio</a></li>
                 <li><a href="servicios.html">Servicios</a></li>
                 <li><a href="precios.html">Precios</a></li>
                 <li><a href="contacto.html">Reservar</a></li>
