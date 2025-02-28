@@ -33,6 +33,18 @@ header {
     margin-left: 30px;
 }
 
+/* Nuevos estilos para el logo-botón */
+.logo-link {
+    display: block;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+.logo-link:focus {
+    outline: none;
+}
+
 .logo {
     height: 30px;
     object-fit: contain;
