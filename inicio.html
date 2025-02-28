@@ -11,19 +11,18 @@
     <meta name="apple-mobile-web-app-title" content="Traslado Justo" />
     <link rel="manifest" href="estilos/img/site.webmanifest" />
     <title>Inicio - Traslado Justo</title>
-    <link rel="stylesheet" href="estilos/inicio.css">
+    <link rel="stylesheet" href="estilos/styles.css">
 </head>
 <body>
-    <!-- Fondo desenfocado (solo para móviles) -->
-    <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
-
-    <!-- Header -->
+    <!-- Header Actualizado -->
     <header>
         <div class="logo-container">
             <img src="estilos/img/logo.png" alt="Logo de Traslado Justo" class="logo">
         </div>
-        <nav class="menu-container">
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        
+        <!-- Nav Reestructurado -->
+        <nav>
+            <button class="menu-toggle" aria-label="Menú móvil" onclick="toggleMenu()">☰</button>
             <ul class="menu">
                 <li><a href="inicio.html" class="active">Inicio</a></li>
                 <li><a href="servicios.html">Servicios</a></li>
@@ -31,10 +30,11 @@
                 <li><a href="contacto.html">Reservar</a></li>
                 <li><a href="acerca.html">Acerca</a></li>
             </ul>
+            <div class="overlay" onclick="toggleMenu()"></div>
         </nav>
     </header>
 
-    <!-- Main Content -->
+    <!-- Main Content (sin cambios) -->
     <main>
         <div class="hero">
             <div class="hero-content">
@@ -81,7 +81,7 @@
         </section>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer (sin cambios) -->
     <footer>
         <div class="container">
             <p>© 2024 Traslado Justo. Todos los derechos reservados.</p>
@@ -94,27 +94,51 @@
         </div>
     </footer>
 
-    <!-- JavaScript integrado -->
+    <!-- JavaScript Actualizado -->
     <script>
-        function toggleMenu() {
-            const menu = document.querySelector('.menu');
-            const overlay = document.getElementById('overlay');
-            menu.classList.toggle('active');
-            overlay.classList.toggle('active');
+    // Función mejorada de toggle
+    function toggleMenu() {
+        const menu = document.querySelector('.menu');
+        const overlay = document.querySelector('.overlay');
+        menu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
+    }
+
+    // Cierre inteligente mejorado
+    document.addEventListener('click', (e) => {
+        const menu = document.querySelector('.menu');
+        const menuToggle = document.querySelector('.menu-toggle');
+        const overlay = document.querySelector('.overlay');
+
+        const clickEnMenu = menu.contains(e.target);
+        const clickEnBoton = menuToggle.contains(e.target);
+        const clickEnOverlay = overlay.contains(e.target);
+
+        if (!clickEnMenu && !clickEnBoton && menu.classList.contains('active')) {
+            toggleMenu();
         }
 
-        // Cerrar el menú al hacer clic fuera de él
-        document.addEventListener('click', function(event) {
-            const menu = document.querySelector('.menu');
-            const menuToggle = document.querySelector('.menu-toggle');
-            const overlay = document.getElementById('overlay');
+        if (clickEnOverlay && overlay.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
 
-            // Verificar si el clic fue fuera del menú y del botón de alternar
-            if (!menu.contains(event.target) && !menuToggle.contains(event.target) && menu.classList.contains('active')) {
-                menu.classList.remove('active');
-                overlay.classList.remove('active');
-            }
+    // Cierre automático al seleccionar opción
+    document.querySelectorAll('.menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) toggleMenu();
         });
+    });
+
+    // Ajuste inicial de posición del menú
+    window.addEventListener('DOMContentLoaded', () => {
+        const header = document.querySelector('header');
+        const menu = document.querySelector('.menu');
+        if(header && menu) {
+            menu.style.top = `${header.offsetHeight}px`;
+        }
+    });
     </script>
 </body>
 </html>
