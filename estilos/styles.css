@@ -33,7 +33,6 @@ header {
     margin-left: 30px;
 }
 
-/* Nuevos estilos para el logo-botón */
 .logo-link {
     display: block;
     text-decoration: none;
@@ -224,7 +223,7 @@ header {
     background-color: #8A2BE2;
 }
 
-/* ===================== SECCIÓN FEATURES ===================== */
+/* ===================== SECCIÓN ADMINISTRADORES ACTUALIZADA ===================== */
 #features {
     padding: 50px 20px;
     background-color: #EFEFEF;
@@ -234,7 +233,7 @@ header {
 
 #features h2 {
     font-size: 2em;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     color: #4B0082;
 }
 
@@ -249,10 +248,11 @@ header {
     background-color: #FFFFFF;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
     width: 300px;
     transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
 }
 
 .feature:hover {
@@ -260,68 +260,39 @@ header {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-.feature img {
-    width: 60px;
-    margin-bottom: 15px;
+.admin-portrait {
+    height: 180px;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+}
+
+.admin-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.feature:hover .admin-portrait img {
+    transform: scale(1.05);
+}
+
+.admin-details {
+    padding: 15px;
+    background: white;
+}
+
+.admin-details p {
+    margin: 8px 0;
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: #666;
 }
 
 .feature h3 {
     font-size: 1.2em;
     margin-bottom: 10px;
-}
-
-.feature p {
-    font-size: 1em;
-    line-height: 1.5;
-    color: #666;
-}
-
-/* ===================== SECCIÓN TESTIMONIALS ===================== */
-#testimonials {
-    padding: 50px 20px;
-    background-color: #4B0082;
-    text-align: center;
-    color: #FFFFFF;
-}
-
-#testimonials h2 {
-    font-size: 2em;
-    margin-bottom: 30px;
-}
-
-.testimonials-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-.testimonial {
-    background-color: #FFFFFF;
-    color: #333;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    width: 300px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.testimonial:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-.testimonial p {
-    font-size: 1em;
-    margin-bottom: 15px;
-    font-style: italic;
-    color: #666;
-}
-
-.testimonial h4 {
-    font-size: 1em;
-    color: #4B0082;
+    padding: 0 15px;
 }
 
 /* ===================== FOOTER ===================== */
@@ -369,13 +340,20 @@ footer nav ul li a:hover {
         padding: 20px;
     }
 
-    .features-container,
-    .testimonials-container {
+    .features-container {
         padding: 0 15px;
     }
 
-    .feature,
-    .testimonial {
+    .feature {
         width: 100%;
     }
+
+    .admin-portrait {
+        height: 200px;
+    }
+}
+
+/* Sección de creadores oculta */
+#testimonials {
+    display: none;
 }
