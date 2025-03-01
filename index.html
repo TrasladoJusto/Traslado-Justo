@@ -23,6 +23,43 @@
         .logo-link:focus {
             outline: none;
         }
+        
+        /* Nuevos estilos para administradores */
+        .feature {
+            position: relative;
+            overflow: hidden;
+            padding: 0;
+        }
+        .admin-portrait {
+            height: 180px;
+            overflow: hidden;
+            border-radius: 10px 10px 0 0;
+        }
+        .admin-portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .feature:hover .admin-portrait img {
+            transform: scale(1.05);
+        }
+        .admin-details {
+            padding: 15px;
+            background: white;
+        }
+        .admin-details p {
+            margin: 8px 0;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        #features h2 {
+            margin-bottom: 40px;
+        }
+        /* Ocultar sección de creadores */
+        #testimonials {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -47,7 +84,7 @@
         </nav>
     </header>
 
-    <!-- Main Content (sin cambios) -->
+    <!-- Main Content actualizado -->
     <main>
         <div class="hero">
             <div class="hero-content">
@@ -59,42 +96,63 @@
         </div>
 
         <section id="features">
-            <h2>Nuestros Admistradores</h2>
+            <h2>Nuestros Administradores</h2>
             <div class="features-container">
                 <div class="feature">
-                    <img src="estilos/img/creador.jpeg" alt="Icono de Seguridad">
+                    <div class="admin-portrait">
+                        <img src="estilos/img/creador.jpeg" alt="Jehú Anchante">
+                    </div>
                     <h3>Jehú Anchante</h3>
-                    <p>Con promedio de servicios realizados con exito de 95%.</p>
+                    <div class="admin-details">
+                        <p>Con promedio de servicios realizados con exito de 95%.</p>
+                        <p>Especialista en logística operativa</p>
+                    </div>
                 </div>
                 <div class="feature">
-                    <img src="imagenes/rapidez.svg" alt="Icono de Rapidez">
+                    <div class="admin-portrait">
+                        <img src="imagenes/barrueta.jpg" alt="Jorge Barrueta">
+                    </div>
                     <h3>Jorge Barrueta</h3>
-                    <p>Changan Alsvin 2003 negro.</p>
+                    <div class="admin-details">
+                        <p>Changan Alsvin 2003 negro.</p>
+                        <p>5 años de experiencia en transporte</p>
+                    </div>
                 </div>
                 <div class="feature">
-                    <img src="imagenes/cobertura.svg" alt="Icono de Cobertura">
+                    <div class="admin-portrait">
+                        <img src="imagenes/montoya.jpg" alt="Carlos Montoya">
+                    </div>
                     <h3>Carlos Montoya</h3>
-                    <p>Experiencia y puntualidad garantizada.</p>
+                    <div class="admin-details">
+                        <p>Experiencia y puntualidad garantizada.</p>
+                        <p>Coordinador de flota</p>
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="testimonials">
-            <h2>Creadores de la Pagina</h2>
-            <div class="testimonials-container">
-                <div class="testimonial">
-                    <p>“Programador y desarrollador Web<br> de Traslado Justo.”</p>
-                    <h4>- Asahel Anchante</h4>
+                <div class="feature">
+                    <div class="admin-portrait">
+                        <img src="imagenes/admin4.jpg" alt="Luis Pérez">
+                    </div>
+                    <h3>Luis Pérez</h3>
+                    <div class="admin-details">
+                        <p>Atención al cliente 24/7</p>
+                        <p>Especialista en rutas alternativas</p>
+                    </div>
                 </div>
-                <div class="testimonial">
-                    <p>“Mentor de Innovación y fundador de Traslado Justo.”</p>
-                    <h4>- Jehú Anchante</h4>
+                <div class="feature">
+                    <div class="admin-portrait">
+                        <img src="imagenes/admin5.jpg" alt="Ana Gómez">
+                    </div>
+                    <h3>Ana Gómez</h3>
+                    <div class="admin-details">
+                        <p>Gestión de reservas</p>
+                        <p>Soporte técnico operativo</p>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer (sin cambios) -->
+    <!-- Footer sin cambios -->
     <footer>
         <div class="container">
             <p>© 2024 Traslado Justo. Todos los derechos reservados.</p>
