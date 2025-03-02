@@ -13,57 +13,20 @@
     <title>Inicio - Traslado Justo</title>
     <link rel="stylesheet" href="estilos/styles.css">
     <style>
-        /* Estilos adicionales para el logo-botón */
-        .logo-link {
-            display: block;
+        .admin-link {
             text-decoration: none;
-            border: none;
-            outline: none;
-        }
-        .logo-link:focus {
-            outline: none;
-        }
-        
-        /* Nuevos estilos para administradores */
-        .feature {
-            position: relative;
-            overflow: hidden;
-            padding: 0;
-        }
-        .admin-portrait {
-            height: 180px;
-            overflow: hidden;
-            border-radius: 10px 10px 0 0;
-        }
-        .admin-portrait img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            color: inherit;
+            display: block;
             transition: transform 0.3s ease;
         }
-        .feature:hover .admin-portrait img {
-            transform: scale(1.05);
-        }
-        .admin-details {
-            padding: 15px;
-            background: white;
-        }
-        .admin-details p {
-            margin: 8px 0;
-            font-size: 0.9em;
-            line-height: 1.4;
-        }
-        #features h2 {
-            margin-bottom: 40px;
-        }
-        /* Ocultar sección de creadores */
-        #testimonials {
-            display: none;
+        
+        .admin-link:hover {
+            transform: scale(1.02);
+            z-index: 1;
         }
     </style>
 </head>
 <body>
-    <!-- Header Actualizado -->
     <header>
         <div class="logo-container">
             <a href="index.html" class="logo-link">
@@ -71,7 +34,6 @@
             </a>
         </div>
         
-        <!-- Nav Reestructurado -->
         <nav>
             <button class="menu-toggle" aria-label="Menú móvil" onclick="toggleMenu()">☰</button>
             <ul class="menu">
@@ -84,7 +46,6 @@
         </nav>
     </header>
 
-    <!-- Main Content actualizado -->
     <main>
         <div class="hero">
             <div class="hero-content">
@@ -98,66 +59,79 @@
         <section id="features">
             <h2>Nuestros Administradores</h2>
             <div class="features-container">
-                <div class="feature">
-                    <div class="admin-portrait">
-                        <img src="estilos/img/creador.jpeg" alt="Jehú Anchante">
+                <a href="admin/jehu.html" class="admin-link">
+                    <div class="feature">
+                        <div class="admin-portrait">
+                            <img src="estilos/img/creador.jpeg" alt="Jehú Anchante">
+                        </div>
+                        <h3>Jehú Anchante</h3>
+                        <div class="admin-details">
+                            <p>Datos del Vehículo<br>
+                            Marca: NISSAN<br>
+                            Modelo: VERSA<br>
+                            Color: Azul<br>
+                            Placa: ATW-038<br>
+                            Teléfono: 995 564 622</p>
+                            <p>Especialista en logística operativa</p>
+                        </div>
                     </div>
-                    <h3>Jehú Anchante</h3>
-                    <div class="admin-details">
-                        <p> Datos del Vehículo<br>
-Marca  :  NISSAN<br>
-Modelo:  VERSA<br>
-Color    : Azul<br>
-Placa    : ATW-038<br>
-Teléfono : 995 564 622</p>
-                        <p>Especialista en logística operativa</p>
+                </a>
+
+                <a href="admin/jorge.html" class="admin-link">
+                    <div class="feature">
+                        <div class="admin-portrait">
+                            <img src="estilos/img/file.png" alt="Jorge Barrueta">
+                        </div>
+                        <h3>Jorge Barrueta</h3>
+                        <div class="admin-details">
+                            <p>Changan Alsvin 2003 negro.</p>
+                            <p>5 años de experiencia en transporte</p>
+                        </div>
                     </div>
-                </div>
-                <div class="feature">
-                    <div class="admin-portrait">
-                        <img src="estilos/img/file.png" alt="Jorge Barrueta">
+                </a>
+
+                <a href="admin/pablo.html" class="admin-link">
+                    <div class="feature">
+                        <div class="admin-portrait">
+                            <img src="estilos/img/Administrador2.png" alt="Pablo Flores">
+                        </div>
+                        <h3>Pablo Flores</h3>
+                        <div class="admin-details">
+                            <p>Experiencia y puntualidad garantizada.</p>
+                            <p>Coordinador de flota</p>
+                        </div>
                     </div>
-                    <h3>Jorge Barrueta</h3>
-                    <div class="admin-details">
-                        <p>Changan Alsvin 2003 negro.</p>
-                        <p>5 años de experiencia en transporte</p>
+                </a>
+
+                <a href="admin/carlos.html" class="admin-link">
+                    <div class="feature">
+                        <div class="admin-portrait">
+                            <img src="estilos/img/Administrador3.png" alt="Carlos Montoya">
+                        </div>
+                        <h3>Carlos Montoya</h3>
+                        <div class="admin-details">
+                            <p>Atención al cliente 24/7</p>
+                            <p>Especialista en rutas alternativas</p>
+                        </div>
                     </div>
-                </div>
-                <div class="feature">
-                    <div class="admin-portrait">
-                        <img src="estilos/img/Administrador2.png" alt="Carlos Montoya">
+                </a>
+
+                <a href="admin/ana.html" class="admin-link">
+                    <div class="feature">
+                        <div class="admin-portrait">
+                            <img src="imagenes/admin5.jpg" alt="Ana Gómez">
+                        </div>
+                        <h3>Ana Gómez</h3>
+                        <div class="admin-details">
+                            <p>Gestión de reservas</p>
+                            <p>Soporte técnico operativo</p>
+                        </div>
                     </div>
-                    <h3>Pablo Flores</h3>
-                    <div class="admin-details">
-                        <p>Experiencia y puntualidad garantizada.</p>
-                        <p>Coordinador de flota</p>
-                    </div>
-                </div>
-                <div class="feature">
-                    <div class="admin-portrait">
-                        <img src="estilos/img/Administrador3.png" alt="Luis Pérez">
-                    </div>
-                    <h3>Carlos Montoya</h3>
-                    <div class="admin-details">
-                        <p>Atención al cliente 24/7</p>
-                        <p>Especialista en rutas alternativas</p>
-                    </div>
-                </div>
-                <div class="feature">
-                    <div class="admin-portrait">
-                        <img src="imagenes/admin5.jpg" alt="Ana Gómez">
-                    </div>
-                    <h3>Ana Gómez</h3>
-                    <div class="admin-details">
-                        <p>Gestión de reservas</p>
-                        <p>Soporte técnico operativo</p>
-                    </div>
-                </div>
+                </a>
             </div>
         </section>
     </main>
 
-    <!-- Footer sin cambios -->
     <footer>
         <div class="container">
             <p>© 2024 Traslado Justo. Todos los derechos reservados.</p>
@@ -170,9 +144,7 @@ Teléfono : 995 564 622</p>
         </div>
     </footer>
 
-    <!-- JavaScript Actualizado -->
     <script>
-    // Función mejorada de toggle
     function toggleMenu() {
         const menu = document.querySelector('.menu');
         const overlay = document.querySelector('.overlay');
@@ -181,7 +153,6 @@ Teléfono : 995 564 622</p>
         document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
     }
 
-    // Cierre inteligente mejorado
     document.addEventListener('click', (e) => {
         const menu = document.querySelector('.menu');
         const menuToggle = document.querySelector('.menu-toggle');
@@ -200,14 +171,12 @@ Teléfono : 995 564 622</p>
         }
     });
 
-    // Cierre automático al seleccionar opción
     document.querySelectorAll('.menu a').forEach(link => {
         link.addEventListener('click', () => {
             if (window.innerWidth <= 768) toggleMenu();
         });
     });
 
-    // Ajuste inicial de posición del menú
     window.addEventListener('DOMContentLoaded', () => {
         const header = document.querySelector('header');
         const menu = document.querySelector('.menu');
