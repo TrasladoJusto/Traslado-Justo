@@ -4,29 +4,31 @@
     <meta name="google-adsense-account" content="ca-pub-2938269480263869">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="estilos/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="../favicon-96x96.png" sizes="96x96">
     <link rel="stylesheet" href="estilos/admin-styles.css">
     <title>Jehú Anchante - Traslado Justo</title>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header Mejorado -->
     <header>
-        <div class="logo-container">
-            <a href="html/inicio.html">
-                <img src="estilos/img/logo.png" alt="Logo" class="logo">
-            </a>
+        <div class="container">
+            <div class="logo-container">
+                <a href="html/inicio.html">
+                    <img src="estilos/img/logo.png" alt="Logo" class="logo">
+                </a>
+            </div>
+            
+            <nav>
+                <button class="menu-toggle" aria-label="Menú móvil">☰</button>
+                <ul class="menu">
+                    <li><a href="../servicios.html">Servicios</a></li>
+                    <li><a href="../precios.html">Precios</a></li>
+                    <li><a href="../contacto.html">Reservar</a></li>
+                    <li><a href="../acerca.html">Acerca</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-overlay"></div>
         </div>
-        
-        <nav>
-            <button class="menu-toggle" aria-label="Menú móvil" onclick="toggleMenu()">☰</button>
-            <ul class="menu">
-                <li><a href="../servicios.html">Servicios</a></li>
-                <li><a href="../precios.html">Precios</a></li>
-                <li><a href="../contacto.html">Reservar</a></li>
-                <li><a href="../acerca.html">Acerca</a></li>
-            </ul>
-            <div class="overlay" onclick="toggleMenu()"></div>
-        </nav>
     </header>
 
     <!-- Contenido Principal -->
@@ -70,7 +72,7 @@
         </section>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer Mejorado -->
     <footer>
         <div class="container">
             <p>© 2024 Traslado Justo. Todos los derechos reservados.</p>
@@ -83,51 +85,47 @@
         </div>
     </footer>
 
-    <!-- JavaScript Integrado -->
+    <!-- JavaScript Optimizado -->
     <script>
-    function toggleMenu() {
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.menu-toggle');
         const menu = document.querySelector('.menu');
-        const overlay = document.querySelector('.overlay');
+        const overlay = document.querySelector('.mobile-menu-overlay');
         const body = document.body;
-        
-        menu.classList.toggle('active');
-        overlay.classList.toggle('active');
-        body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
-        
-        // Animación del botón hamburguesa
-        const menuToggle = document.querySelector('.menu-toggle');
-        menuToggle.style.transform = menu.classList.contains('active') ? 'rotate(90deg)' : 'none';
-    }
 
-    // Cerrar menú al hacer clic fuera
-    document.addEventListener('click', (e) => {
-        const menu = document.querySelector('.menu');
-        const menuToggle = document.querySelector('.menu-toggle');
-        
-        if (!menu.contains(e.target) && !menuToggle.contains(e.target) && menu.classList.contains('active')) {
-            toggleMenu();
-        }
-    });
+        // Función de toggle del menú
+        const toggleMenu = () => {
+            menu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
+            menuToggle.style.transform = menu.classList.contains('active') ? 'rotate(90deg)' : 'none';
+        };
 
-    // Cerrar menú al tocar el overlay
-    document.querySelector('.overlay').addEventListener('click', toggleMenu);
+        // Event Listeners
+        menuToggle.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
 
-    // Ajustar posición del menú móvil al cargar
-    window.addEventListener('DOMContentLoaded', () => {
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target) {
+                if (menu.classList.contains('active') && !e.target.closest('.menu-toggle')) {
+                    toggleMenu();
+                }
+            }
+        });
+
+        // Ajustar posición del menú
         const header = document.querySelector('header');
-        const menu = document.querySelector('.menu');
         if(header && menu) {
             menu.style.top = `${header.offsetHeight}px`;
         }
-    });
 
-    // Cerrar menú al redimensionar a desktop
-    window.addEventListener('resize', () => {
-        if(window.innerWidth > 768) {
-            document.querySelector('.menu').classList.remove('active');
-            document.querySelector('.overlay').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
+        // Cerrar menú en resize
+        window.addEventListener('resize', () => {
+            if(window.innerWidth > 768 && menu.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
     });
     </script>
 </body>
