@@ -21,19 +21,25 @@ body {
     padding-top: 48px; /* Compensa header fijo */
 }
 
-/* ===================== HEADER ===================== */
+/* ===================== HEADER MEJORADO ===================== */
 header {
     background: #FFFFFF;
-    padding: 0 30px;
     box-shadow: var(--sombra-suave);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 48px;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    height: 48px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    height: 100%;
 }
 
 .logo-container {
@@ -43,6 +49,7 @@ header {
 
 .logo {
     height: 30px;
+    width: auto;
     object-fit: contain;
     transition: transform 0.3s;
 }
@@ -81,16 +88,11 @@ header {
     transition: width 0.3s ease;
 }
 
-.menu li a:hover::after,
-.menu li a.active::after {
+.menu li a:hover::after {
     width: 100%;
 }
 
-.menu li a:hover {
-    color: var(--color-secundario);
-}
-
-/* ===================== MENÚ MÓVIL ===================== */
+/* ===================== MENÚ MÓVIL MEJORADO ===================== */
 .menu-toggle {
     display: none;
     background: none;
@@ -98,11 +100,12 @@ header {
     color: var(--color-primario);
     font-size: 28px;
     cursor: pointer;
+    padding: 5px;
     transition: transform 0.3s;
     z-index: 1001;
 }
 
-.overlay {
+.mobile-menu-overlay {
     display: none;
     position: fixed;
     top: 0;
@@ -110,68 +113,58 @@ header {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(4px);
     z-index: 998;
 }
 
 @media (max-width: 768px) {
-    header {
-        padding: 0 20px;
+    .header-container {
+        padding: 0 15px;
     }
     
     .menu {
         position: fixed;
         top: 48px;
         right: -100%;
-        background: #FFFFFF;
         width: 70%;
+        max-width: 300px;
         height: calc(100vh - 48px);
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
         flex-direction: column;
-        gap: 0;
-        padding: 20px;
-        transition: right 0.3s ease;
+        padding: 25px 20px;
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 999;
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
     }
     
     .menu.active {
         right: 0;
-        display: flex;
     }
     
     .menu li {
         margin: 15px 0;
-        border-bottom: 1px solid rgba(75, 0, 130, 0.1);
+        border-bottom: 1px solid rgba(106, 13, 173, 0.1);
     }
     
     .menu li a {
-        color: var(--color-primario);
         font-size: 1.1rem;
         padding: 12px 15px;
         display: block;
         border-radius: 8px;
-        background: rgba(75, 0, 130, 0.05);
+        background: rgba(106, 13, 173, 0.05);
     }
     
     .menu li a:hover {
-        background: rgba(75, 0, 130, 0.1);
-        transform: translateX(8px);
-        color: var(--color-secundario);
-    }
-    
-    .menu li a::after {
-        display: none;
+        background: rgba(106, 13, 173, 0.1);
+        transform: translateX(10px);
     }
     
     .menu-toggle {
         display: block;
     }
     
-    .menu-toggle.active {
-        transform: rotate(90deg);
-    }
-    
-    .overlay.active {
+    .mobile-menu-overlay.active {
         display: block;
     }
 }
@@ -180,7 +173,7 @@ header {
 .admin-hero {
     height: 60vh;
     background: linear-gradient(rgba(75, 0, 130, 0.8), rgba(75, 0, 130, 0.8)),
-                url('../img/creador.jpeg') center/cover;
+                url('../estilos/img/creador.jpeg') center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -273,7 +266,7 @@ header {
     font-size: 1.1rem;
 }
 
-/* ===================== FOOTER ===================== */
+/* ===================== FOOTER MEJORADO ===================== */
 footer {
     background: var(--color-primario);
     color: white;
@@ -292,15 +285,18 @@ footer nav ul {
     justify-content: center;
     gap: 25px;
     margin: 15px 0;
+    padding: 0;
+    list-style: none;
 }
 
-footer a {
+footer nav ul li a {
     color: white;
     text-decoration: none;
     transition: color 0.3s;
+    font-size: 0.95rem;
 }
 
-footer a:hover {
+footer nav ul li a:hover {
     color: var(--color-secundario);
 }
 
@@ -328,16 +324,12 @@ footer a:hover {
 }
 
 @media (max-width: 480px) {
-    .stat-number {
-        font-size: 2.2rem;
+    footer nav ul {
+        flex-direction: column;
+        gap: 10px;
     }
     
     .vehicle-info p {
         font-size: 1rem;
-    }
-    
-    footer nav ul {
-        flex-direction: column;
-        gap: 10px;
     }
 }
