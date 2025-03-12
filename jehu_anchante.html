@@ -4,69 +4,70 @@
     <meta name="google-adsense-account" content="ca-pub-2938269480263869">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="estilos/img/favicon.svg" />
-    <link rel="shortcut icon" href="estilos/img/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="estilos/img/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Traslado Justo" />
-    <link rel="manifest" href="estilos/img/site.webmanifest" />
-    <title>Inicio - Traslado Justo</title>
-    <link rel="stylesheet" href="estilos/styles.css">
-    <style>
-        .admin-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .admin-link:hover {
-            transform: scale(1.02);
-            box-shadow: 0 4px 15px rgba(75, 0, 130, 0.2);
-            z-index: 1;
-        }
-    </style>
+    <link rel="icon" type="image/png" href="../favicon-96x96.png" sizes="96x96">
+    <link rel="stylesheet" href="html/estilos/admin-styles.css">
+    <title>Jehú Anchante - Traslado Justo</title>
 </head>
 <body>
     <!-- Header Mejorado -->
     <header>
         <div class="header-container">
             <div class="logo-container">
-                <a href="index.html" class="logo-link">
-                    <img src="estilos/img/logo.png" alt="Logo de Traslado Justo" class="logo">
+                <a href="html/inicio.html">
+                    <img src="html/estilos/img/logo.png" alt="Logo" class="logo">
                 </a>
             </div>
             
             <nav>
                 <button class="menu-toggle" aria-label="Menú móvil">☰</button>
                 <ul class="menu">
-                    <li><a href="servicios.html">Servicios</a></li>
-                    <li><a href="precios.html">Precios</a></li>
-                    <li><a href="contacto.html">Reservar</a></li>
-                    <li><a href="acerca.html">Acerca</a></li>
+                    <li><a href="../servicios.html">Servicios</a></li>
+                    <li><a href="../precios.html">Precios</a></li>
+                    <li><a href="../contacto.html">Reservar</a></li>
+                    <li><a href="../acerca.html">Acerca</a></li>
                 </ul>
                 <div class="mobile-menu-overlay"></div>
             </nav>
         </div>
     </header>
 
+    <!-- Contenido Principal (sin cambios) -->
     <main>
-        <!-- Sección Hero -->
-        <div class="hero">
+        <section class="admin-hero">
             <div class="hero-content">
-                <p class="highlight">Comienza tu viaje en sencillos pasos</p>
-                <h1 class="hero-title">¡RESERVA TUS TRASLADOS<br>DESDE O HACIA EL<br>AEROPUERTO</h1>
-                <p class="hero-subtitle">Después de un vuelo agotador, te recibiremos en la terminal y te llevaremos cómodamente a tu destino.<br> Nuestros conductores estarán allí esperando, incluso si hay cambios en el itinerario.</p>
-                <a href="contacto.html" class="cta-button">Reserva aquí</a>
+                <div class="admin-portrait">
+                    <img src="../estilos/img/creador.jpeg" alt="Jehú Anchante">
+                </div>
+                <h1>Jehú Anchante</h1>
+                <p class="admin-role">Conductor Certificado</p>
             </div>
-        </div>
+        </section>
 
-        <!-- Sección Administradores -->
-        <section id="features">
-            <h2>Nuestros Administradores</h2>
-            <div class="features-container">
-                <!-- Contenido de administradores mantenido igual -->
-                <!-- ... -->
+        <section class="admin-profile">
+            <div class="profile-card">
+                <div class="service-summary">
+                    <h2>Resumen de Servicio</h2>
+                    <div class="service-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Años de experiencia</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">98%</span>
+                            <span class="stat-label">Clientes satisfechos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vehicle-details">
+                    <h3>Vehículo Asignado</h3>
+                    <div class="vehicle-info">
+                        <p><strong>Modelo:</strong> Nissan Versa 2023</p>
+                        <p><strong>Placa:</strong> ATW-038</p>
+                        <p><strong>Color:</strong> Azul Metálico</p>
+                        <p><strong>Capacidad:</strong> 4 pasajeros</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -77,59 +78,47 @@
             <p>© 2024 Traslado Justo. Todos los derechos reservados.</p>
             <nav>
                 <ul>
-                    <li><a href="Politicas y Terminos.html">Política de privacidad</a></li>
-                    <li><a href="Politicas y Terminos.html">Términos de servicio</a></li>
+                    <li><a href="../Politicas y Terminos.html">Política de privacidad</a></li>
+                    <li><a href="../Politicas y Terminos.html">Términos de servicio</a></li>
                 </ul>
             </nav>
         </div>
     </footer>
 
-    <!-- JavaScript Integrado Mejorado -->
+    <!-- JavaScript Actualizado -->
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuToggle = document.querySelector('.menu-toggle');
+    document.addEventListener('DOMContentLoaded', () => {
         const menu = document.querySelector('.menu');
+        const toggle = document.querySelector('.menu-toggle');
         const overlay = document.querySelector('.mobile-menu-overlay');
-        const body = document.body;
-
+        
         const toggleMenu = () => {
             menu.classList.toggle('active');
             overlay.classList.toggle('active');
-            body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
-            menuToggle.style.transform = menu.classList.contains('active') ? 'rotate(90deg)' : 'none';
+            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
+            toggle.style.transform = menu.classList.contains('active') ? 'rotate(90deg)' : 'none';
         };
 
-        // Eventos del menú
-        menuToggle.addEventListener('click', toggleMenu);
+        // Event listeners
+        toggle.addEventListener('click', toggleMenu);
         overlay.addEventListener('click', toggleMenu);
 
         // Cerrar al hacer clic fuera
         document.addEventListener('click', (e) => {
-            if (!menu.contains(e.target) {
-                if (menu.classList.contains('active') && !e.target.closest('.menu-toggle')) {
-                    toggleMenu();
-                }
+            if (!menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+                toggleMenu();
             }
         });
 
         // Ajustar posición del menú
         const header = document.querySelector('header');
-        if(header && menu) {
-            menu.style.top = `${header.offsetHeight}px`;
-        }
+        if (header) menu.style.top = `${header.offsetHeight}px`;
 
-        // Cerrar en resize
+        // Cerrar al redimensionar
         window.addEventListener('resize', () => {
-            if(window.innerWidth > 768 && menu.classList.contains('active')) {
+            if (window.innerWidth > 768 && menu.classList.contains('active')) {
                 toggleMenu();
             }
-        });
-
-        // Cerrar al hacer clic en enlaces móviles
-        document.querySelectorAll('.menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                if(window.innerWidth <= 768) toggleMenu();
-            });
         });
     });
     </script>
