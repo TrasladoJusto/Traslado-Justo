@@ -1,335 +1,73 @@
-/* ===================== ESTILOS GLOBALES ===================== */
-:root {
-    --color-primario: #4B0082;
-    --color-secundario: #8A2BE2;
-    --color-texto: #333;
-    --color-fondo: #F4F4F4;
-    --sombra-suave: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+/* estilos/mobile-card.css */
 
+/* Reset y fuente */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
+/* Cuerpo centrado */
 body {
-    background-color: var(--color-fondo);
-    color: var(--color-texto);
-    overflow-x: hidden;
-    padding-top: 48px; /* Compensa header fijo */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #F4F4F4;
 }
 
-/* ===================== HEADER MEJORADO ===================== */
-header {
-    background: #FFFFFF;
-    box-shadow: var(--sombra-suave);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    height: 48px;
+/* Tarjeta */
+.card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 90vw;
+  max-width: 360px;
+  padding: 20px;
+  text-align: center;
 }
 
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 30px;
-    height: 100%;
+/* Imagen de perfil */
+.card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 15px;
 }
 
-.logo-container {
-    display: flex;
-    align-items: center;
+/* Nombre */
+.card h1 {
+  font-size: 1.5rem;
+  margin: 10px 0 5px;
+  color: #4B0082;
 }
 
-.logo {
-    height: 30px;
-    width: auto;
-    object-fit: contain;
-    transition: transform 0.3s;
+/* Rol */
+.card .role {
+  font-size: 1rem;
+  color: #6a1b9a;
+  margin-bottom: 10px;
 }
 
-.logo:hover {
-    transform: scale(1.05);
+/* Teléfono */
+.card .phone {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
 }
 
-/* ===================== NAVEGACIÓN PRINCIPAL ===================== */
-.menu {
-    list-style: none;
-    display: flex;
-    gap: 50px;
-    margin: 0;
-    padding: 0;
+/* Detalles del vehículo */
+.card .vehicle-details p {
+  font-size: 0.95rem;
+  color: #333;
+  margin: 5px 0;
 }
 
-.menu li a {
-    color: #6a0dad;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 16px;
-    position: relative;
-    padding: 5px 0;
-    transition: all 0.3s;
-}
-
-.menu li a::after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--color-secundario);
-    transition: width 0.3s ease;
-}
-
-.menu li a:hover::after {
-    width: 100%;
-}
-
-/* ===================== MENÚ MÓVIL MEJORADO ===================== */
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--color-primario);
-    font-size: 28px;
-    cursor: pointer;
-    padding: 5px;
-    transition: transform 0.3s;
-    z-index: 1001;
-}
-
-.mobile-menu-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(4px);
-    z-index: 998;
-}
-
-@media (max-width: 768px) {
-    .header-container {
-        padding: 0 15px;
-    }
-    
-    .menu {
-        position: fixed;
-        top: 48px;
-        right: -100%;
-        width: 70%;
-        max-width: 300px;
-        height: calc(100vh - 48px);
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
-        flex-direction: column;
-        padding: 25px 20px;
-        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 999;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-    }
-    
-    .menu.active {
-        right: 0;
-    }
-    
-    .menu li {
-        margin: 15px 0;
-        border-bottom: 1px solid rgba(106, 13, 173, 0.1);
-    }
-    
-    .menu li a {
-        font-size: 1.1rem;
-        padding: 12px 15px;
-        display: block;
-        border-radius: 8px;
-        background: rgba(106, 13, 173, 0.05);
-    }
-    
-    .menu li a:hover {
-        background: rgba(106, 13, 173, 0.1);
-        transform: translateX(10px);
-    }
-    
-    .menu-toggle {
-        display: block;
-    }
-    
-    .mobile-menu-overlay.active {
-        display: block;
-    }
-}
-
-/* ===================== SECCIÓN HERO ADMIN ===================== */
-.admin-hero {
-    height: 60vh;
-    background: linear-gradient(rgba(75, 0, 130, 0.8), rgba(75, 0, 130, 0.8)),
-                url('../estilos/img/creador.jpeg') center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    margin: 48px -30px 0;
-    padding: 30px;
-}
-
-.admin-portrait {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    border: 4px solid white;
-    margin-bottom: 25px;
-    object-fit: cover;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-.admin-role {
-    font-size: 1.4rem;
-    color: #e6d5ff;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-/* ===================== TARJETA DE PERFIL ===================== */
-.profile-card {
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    margin: -80px auto 40px;
-    padding: 40px;
-    position: relative;
-    max-width: 1000px;
-}
-
-.service-summary h2 {
-    color: var(--color-primario);
-    font-size: 2rem;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.service-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    margin: 40px 0;
-}
-
-.stat-item {
-    text-align: center;
-    padding: 25px;
-    background: #f8f4ff;
-    border-radius: 10px;
-    border: 2px solid var(--color-primario);
-}
-
-.stat-number {
-    font-size: 2.8rem;
-    color: var(--color-primario);
-    display: block;
-    line-height: 1;
-}
-
-.stat-label {
-    color: #666;
-    font-size: 0.95rem;
-    margin-top: 10px;
-    display: block;
-}
-
-/* ===================== DETALLES DEL VEHÍCULO ===================== */
-.vehicle-details {
-    margin-top: 40px;
-    padding-top: 40px;
-    border-top: 2px solid #eee;
-}
-
-.vehicle-details h3 {
-    color: var(--color-primario);
-    font-size: 1.6rem;
-    margin-bottom: 25px;
-}
-
-.vehicle-info p {
-    margin: 15px 0;
-    padding: 12px 0;
-    border-bottom: 1px solid #f0f0f0;
-    font-size: 1.1rem;
-}
-
-/* ===================== FOOTER MEJORADO ===================== */
-footer {
-    background: var(--color-primario);
-    color: white;
-    padding: 25px 0;
-    margin-top: 60px;
-}
-
-footer .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-footer nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    margin: 15px 0;
-    padding: 0;
-    list-style: none;
-}
-
-footer nav ul li a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s;
-    font-size: 0.95rem;
-}
-
-footer nav ul li a:hover {
-    color: var(--color-secundario);
-}
-
-/* ===================== MEDIA QUERIES ===================== */
-@media (max-width: 992px) {
-    .profile-card {
-        margin: -80px 20px 40px;
-    }
-}
-
-@media (max-width: 768px) {
-    .admin-hero {
-        height: 50vh;
-        margin: 48px -15px 0;
-    }
-
-    .admin-portrait {
-        width: 140px;
-        height: 140px;
-    }
-
-    .service-stats {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    footer nav ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .vehicle-info p {
-        font-size: 1rem;
-    }
+.card .vehicle-details p strong {
+  color: #6a0dad;
 }
